@@ -1,8 +1,9 @@
 Package: NotDiff
-Title: What the package does (one line)
+Title: A package for aligning text lines oftwo versions of a text and measuring the change.
 Version: 0.1
-Authors@R: "First Last <first.last@example.com> [aut, cre]"
-Description: What the package does (one paragraph)
-Depends: R (>= 3.1.1)
-License: What license is it under?
+Authors@R: "Peter Meißner <mail@pmeissner.com> [aut, cre]"
+Description: PUT A LENGTHY DESCRIPTION HERE
+Depends:
+    R (>= 3.1.1)
+License: MIT (http://opensource.org/licenses/MIT)
 LazyData: true
