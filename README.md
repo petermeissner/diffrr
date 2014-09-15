@@ -13,8 +13,7 @@ that allows for fast computer decissions on clear alignments of 100% matches and
 while asking for human input on more complex decissions.
   
 
-## Installation and Demonstration
-
+## Installation
 
     require(devtools)
     install_github("petermeissner/NotDiff")

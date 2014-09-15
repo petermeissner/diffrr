@@ -1,7 +1,8 @@
 Package: NotDiff
 Title: Comparing text, but not like diff.
 Version: 0.1
-Authors@R: "Peter Meissner <retep.meissner@gmail.com> [aut, cre]"
+Authors@R: person("Peter", "Meissner", email = "retep.meissner@gmail.com",
+    role = c("aut", "cre"))
 Description: A package for measuring change between different versions of text
     by automatically or semi-automatically aligning text lines and measuring
     the change. It works kind of like diff or version control systems but
@@ -15,3 +16,5 @@ Depends:
     R (>= 3.1.1)
 License: MIT + file LICENSE
 LazyData: true
+Imports:
+    stringr

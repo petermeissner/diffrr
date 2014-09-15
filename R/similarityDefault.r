@@ -1,4 +1,5 @@
-# Similarity Default
+#' Similarity Default
+#'
 similarityDefault <- function(textLine1="", textLine2=""){
   compare <- function(){
     set.seed(nchar(textLine1)+nchar(textLine2))
