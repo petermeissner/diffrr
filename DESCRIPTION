@@ -1,6 +1,6 @@
 Package: NotDiff
 Title: Comparing text, but not like diff.
-Version: 0.1
+Version: 0.1.00000001
 Authors@R: person("Peter", "Meissner", email = "retep.meissner@gmail.com",
     role = c("aut", "cre"))
 Description: A package for measuring change between different versions of text
@@ -17,4 +17,5 @@ Depends:
 License: MIT + file LICENSE
 LazyData: true
 Imports:
-    stringr
+    stringr,
+    testthat

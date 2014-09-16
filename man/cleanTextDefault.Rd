@@ -5,6 +5,9 @@
 \usage{
 cleanTextDefault(text)
 }
+\arguments{
+\item{text}{parameter for text to be cleaned}
+}
 \description{
 description of function and some \code{code}
 }

@@ -5,6 +5,6 @@
 #' @return The sum of \code{x} and \code{y}.
 #' @examples
 #' ptest()
-ptest <- function(){
+ptest <- function(x,y){
   return(Sys.time())
 }

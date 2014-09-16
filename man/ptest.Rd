@@ -3,7 +3,7 @@
 \alias{ptest}
 \title{A simple function that only exists for testing.}
 \usage{
-ptest()
+ptest(x, y)
 }
 \arguments{
 \item{x}{A number.}

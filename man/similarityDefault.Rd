@@ -5,6 +5,11 @@
 \usage{
 similarityDefault(textLine1 = "", textLine2 = "")
 }
+\arguments{
+\item{textLine1}{a line of text}
+
+\item{textLine2}{a second line of text}
+}
 \description{
 Similarity Default
 }
