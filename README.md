@@ -1,5 +1,5 @@
 # diffr 
-Comparing text -- but not like diff
+Comparing and aligning text.
 
 ## Description
 
