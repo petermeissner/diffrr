@@ -3,12 +3,11 @@
 #' @aliases textAlign
 #'
 #' @param text1
-#' first text
+#' first text; expected to be a character vector;
+#' each vector element of text1 will be compared to each element of text2
 #' @param text2
-#' second text
+#' see text1
 #'
-#' @param file
-#' Whether or not the texts are supplied as character vector
 #'  (\code{file=FALSE}) or as file path (the default with \code{file=TRUE}).
 #' @param cleanText
 #' The function to be applied to each line of the text prior
@@ -83,16 +82,33 @@
 #' important new additions
 #' to this document.", "\n"))
 #'
-#' diffr(text1, text2, file=F)
+#' diffr(text1, text2)
 
-diffr <- function(text1, text2, file=TRUE, cleanText=cleanTextDefault){
+diffr <- function(text1, text2, cleanText=cleanTextDefault){
   text1_clean <- cleanText(text1)
   text2_clean <- cleanText(text2)
   res <- list( text1_orig=text1,
                text2_orig=text2,
-               text2_clean,
-               text2_clean
+               text1_clean=text1_clean,
+               text2_clean=text2_clean
              )
   return(res)
  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -17,5 +17,6 @@ Depends:
 License: MIT + file LICENSE
 LazyData: true
 Imports:
-    stringr,
+    stringr
+Suggests:
     testthat
