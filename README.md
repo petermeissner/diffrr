@@ -1,4 +1,4 @@
-# NotDiff 
+# diffr 
 Comparing text -- but not like diff
 
 ## Description
@@ -16,8 +16,8 @@ while asking for human input on more complex decissions.
 ## Installation
 
     require(devtools)
-    install_github("petermeissner/NotDiff")
-    require(NotDiff)
+    install_github("petermeissner/diffr")
+    require(diffr)
 
     
 ## Links
