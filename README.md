@@ -15,9 +15,12 @@ while asking for human input on more complex decissions.
 
 ## Installation
 
-    require(devtools)
-    install_github("petermeissner/diffr")
-    require(diffr)
+**The package is still under heavy developement so at the moment it should 
+not be installed at all. Should be finisched within a month, though**
+
+    # require(devtools)
+    # install_github("petermeissner/diffr")
+    # require(diffr)
 
     
 ## Links
