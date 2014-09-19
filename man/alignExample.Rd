@@ -3,16 +3,17 @@
 \name{alignExample}
 \alias{alignExample}
 \title{this is some extra stuff for developement}
-\format{\preformatted{List of 9
- $ text2_orig     : chr [1:3] "ab" "cd" "df"
- $ text2_orig     : chr [1:4] "ac" "cd" "def" "klm"
- $ text2_clean    : chr [1:3] "b" "d" "f"
- $ text2_clean    : chr [1:4] "c" "d" "ef" "lm"
- $ alignment_auto : num [1:3, 1:2] 1 2 3 1 2 3
- $ alignment_semi : num [1:4, 1:2] 1 2 3 3 1 2 3 4
- $ distance_veca  : num [1:3] 0 1 0
- $ distance_vecs  : num [1:4] 0 1 0 1
- $ distance_matrix: num [1:3, 1:4] 0 1 1 1 0 1 1 1 0 1 ...
+\format{\preformatted{List of 10
+ $ text2_orig    : chr [1:3] "ab" "cd" "df"
+ $ text2_orig    : chr [1:4] "ac" "cd" "def" "klm"
+ $ text2_clean   : chr [1:3] "b" "d" "f"
+ $ text2_clean   : chr [1:4] "c" "d" "ef" "lm"
+ $ alignment_auto: num [1:3, 1:2] 1 2 3 1 2 3
+ $ alignment_semi: num [1:4, 1:2] 1 2 3 3 1 2 3 4
+ $ distance_vauto: num [1:3] 0 1 0
+ $ distance_vsemi: num [1:4] 0 1 0 1
+ $ distance_mauto: num [1:3, 1:4] 0 1 1 1 0 1 1 1 0 1 ...
+ $ distance_msemi: num [1:3, 1:4] 0 1 1 1 0 1 1 1 0 1 ...
 }}
 \usage{
 alignExample

@@ -1,2 +1,2 @@
 library(testthat)
-test_check("NotDiff")
+test_check("diffr")

@@ -1,6 +1,6 @@
-Package: NotDiff
-Title: Comparing text, but not like diff.
-Version: 0.1.00000001
+Package: diffr
+Title: Comparing and aligning text.
+Version: 0.1.00000002
 Authors@R: person("Peter", "Meissner", email = "retep.meissner@gmail.com",
     role = c("aut", "cre"))
 Description: A package for measuring change between different versions of text
@@ -17,6 +17,8 @@ Depends:
 License: MIT + file LICENSE
 LazyData: true
 Imports:
-    stringr
+    stringr,
+    proxy
 Suggests:
     testthat
+Date: 2014-09-18
