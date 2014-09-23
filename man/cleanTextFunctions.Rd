@@ -5,7 +5,7 @@
 \title{Predefined cleanText functions saved in a list.}
 \format{list of functions}
 \usage{
-diffr("ab", "bb", clean="none")
+cleanTextFunctions
 }
 \arguments{
 \item{none}{does not transform the text at all}

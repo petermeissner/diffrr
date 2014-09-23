@@ -8,7 +8,6 @@
 #' working group see citation(diffr) as well as
 #' https://github.com/petermeissner/diffr for further information
 #'
-#' @usage diffr("ab", "bb", clean="none")
 #'
 #' @format list of functions
 cleanTextFunctions <- list(
@@ -61,13 +60,13 @@ cleanTextFunctions <- list(
                      "^(Paragraaf [[:digit:]]{1,3}[[:alpha:]]?\\.)", #45
                      "^([[:alpha:]]{1,10} Kapitel\\.?)", #46
                      "^([[:alpha:]]{1,10} Kapittel\\.?)", #47
-                     "^(SECÇÃO [[:alpha:]]{1,7}\\.?)", #48
-                     "^(Capítulo [[:alpha:]]{1,7}\\.?)", #49
-                     "^(TÍTULO [[:alpha:]]{1,7}\\.?)", #50
+                     "^(SEC..O [[:alpha:]]{1,7}\\.?)", #48
+                     "^(Cap.tulo [[:alpha:]]{1,7}\\.?)", #49
+                     "^(T.TULO [[:alpha:]]{1,7}\\.?)", #50
                      "^( )", #51
                      "^(\\.)", #52
                      "^( )", #53
-                     "^([[:alpha:]]?IVISÃO [[:alpha:]]{1,7})", #54
+                     "^([[:alpha:]]?IVIS.O [[:alpha:]]{1,7})", #54
                      "^([[:digit:]]. )", #55
                      "^(Kapitel\\:? [[:alpha:]]?{1,7})", #56
                      "^(Titel\\: )", #57

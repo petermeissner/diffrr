@@ -1,5 +1,6 @@
 
-context("Testing diffr() ")
+
+context("Testing: diffr() ")
 
   test_that("diffr runs with the two example texts and results in plausible return", {
     res <- diffr(example_A1_split, example_A2_split)
@@ -17,7 +18,7 @@ context("Testing diffr() ")
   })
 
 
-context("Testing cleanText Functions ")
+context("Testing: cleanTextFunctions")
 
   test_that("cleanText Functions work", {
     ctf <- names(cleanTextFunctions)
@@ -29,7 +30,7 @@ context("Testing cleanText Functions ")
   })
 
 
-context("Testing Similarity Functions ")
+context("Testing: distanceFunctions")
 
 test_that("Similarity Functions work??", {
   distf <- names(distanceFunctions)
@@ -39,6 +40,43 @@ test_that("Similarity Functions work??", {
     expect_true(class(res) %in% c("matrix","numeric"))
   }
 })
+
+
+context("Testing: text_align()")
+
+test_that("does choose_maxdist_option work with reasonable input?", {
+  res <- distanceFunctions$levenshtein(example_A1_split, example_A2_split)
+  expect_is(.choose_maxdist_option(res, "auto"),"numeric")
+  expect_is(.choose_maxdist_option(res, "Inf") ,"numeric")
+  expect_is(.choose_maxdist_option(res, "inf") ,"numeric")
+  expect_is(.choose_maxdist_option(res, "10%") ,"numeric")
+  expect_is(.choose_maxdist_option(res, "100%") ,"numeric")
+  expect_is(.choose_maxdist_option(res, "99.999999991%") ,"numeric")
+  expect_is(.choose_maxdist_option(res, "0.00000000001%") ,"numeric")
+  expect_is(.choose_maxdist_option(res, 100000000) ,"numeric")
+  expect_is(.choose_maxdist_option(res, 0) ,"numeric")
+})
+
+test_that("text align does work with reasonable input", {
+  res <- distanceFunctions$levenshtein(example_A1_split, example_A2_split)
+  expect_is(text_align(res),"matrix")
+  expect_is(text_align(res, "auto"),"matrix")
+  expect_is(text_align(res, retMatrix=F),"data.frame")
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
