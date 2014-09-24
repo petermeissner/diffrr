@@ -15,7 +15,6 @@ while asking for human input on more complex decissions.
 
 ## Installation
 
-**Although the package is still under developement and features are missing, the present version (0.1.1) should work and can be installed (without of cause any warrenty whatsoever).**
 
     # require(devtools)
     # install_github("petermeissner/diffr")
