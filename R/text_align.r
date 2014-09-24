@@ -45,3 +45,10 @@ text_align <- function(distM, maxDist=Inf, retMatrix=T){
     align_matrix_to_align_df(AlignM, distM=distM)
   }
 }
+
+
+
+
+
+
+
