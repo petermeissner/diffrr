@@ -2,20 +2,35 @@
 
 context("Testing: diffr() ")
 
-  test_that("diffr runs with the two example texts and results in plausible return", {
-    res <- diffr(example_A1_split, example_A2_split)
-    expect_true( is.character(res$text1_orig) )
-    expect_true( is.character(res$text2_orig) )
-    expect_true( is.character(res$text1_clean) )
-    expect_true( is.character(res$text2_clean) )
-    expect_true( is.matrix(res$alignment_auto) )
-    expect_true( is.matrix(res$alignment_semi) )
-    expect_true( is.vector(res$distance_vauto) )
-    expect_true( is.vector(res$distance_vsemi) )
-    expect_true( is.matrix(res$distance_matrix) )
-    expect_true( length(res$distance_vauto) == length(res$alignment_auto[,1]) )
-    expect_true( length(res$distance_vsemi) == length(res$alignment_semi[,1]) )
-  })
+test_that("diffr runs with the two example texts
+          and results in plausible return", {
+  res <- diffr(example_A1_split, example_A2_split)
+  expect_true( is.character(res$text1_orig) )
+  expect_true( is.character(res$text2_orig) )
+  expect_true( is.character(res$text1_clean) )
+  expect_true( is.character(res$text2_clean) )
+  expect_true( is.data.frame(res$alignment_df) )
+  expect_true( is.matrix(res$distance_matrix) )
+})
+
+test_that("diffr runs with all distFunctions", {
+  t1 <- example_A1_split
+  t2 <- example_A2_split
+
+  for ( i in seq_along(distanceFunctions) )
+  res <- diffr(t1, t2, dist=distanceFunctions[[i]] )$alignment_df
+    expect_true( is.data.frame(res) )
+
+})
+
+test_that("diffr runs with all cleanTextFunctions", {
+  t1 <- example_A1_split
+  t2 <- example_A2_split
+
+  for ( i in seq_along(cleanTextFunctions) )
+    res <- diffr(t1, t2, clean=cleanTextFunctions[[i]] )$alignment_df
+  expect_true( is.data.frame(res) )
+})
 
 
 context("Testing: cleanTextFunctions")

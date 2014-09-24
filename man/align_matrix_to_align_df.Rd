@@ -3,7 +3,8 @@
 \alias{align_matrix_to_align_df}
 \title{Function that transforms an alignment result in matrix form into an alignment result in data frame form}
 \usage{
-align_matrix_to_align_df(alignM, distM = NULL)
+align_matrix_to_align_df(alignM, distM = NULL, text1_indel_dist = NA,
+  text2_indel_dist = NA)
 }
 \arguments{
 \item{alignM}{an alingment matrix}
