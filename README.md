@@ -1,5 +1,5 @@
 # diffr 
-A package for measuring change between different versions of text
+Comparing and aligning text.
 
 ## Description
 
