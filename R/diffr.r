@@ -85,15 +85,13 @@ diffr <- function(text1, text2, clean="none",
 
 
   # results preparation
-  res <- list( text1_orig=text1,
-               text2_orig=text2,
-               text1_clean=text1_clean,
-               text2_clean=text2_clean,
-               alignment_auto  = cbind( c(1,2,3), c(1,2,3) ),
-               alignment_semi  = cbind( c(1,2,3,3), c(1,2,3,4) ),
-               distance_vauto  = c(0,1,0),
-               distance_vsemi  = c(0,1,0,1),
-               distance_matrix = distance_matrix
+  res <- list( text1_orig        = text1,
+               text2_orig        = text2,
+               text1_clean       = text1_clean,
+               text2_clean       = text2_clean,
+               distance_matrix   = distance_matrix,
+               alignment_matrix  = AlignM,
+               alignment_df      = AlignDF
              )
   # return
   if ( all(ret == "all") ) {
