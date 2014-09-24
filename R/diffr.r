@@ -77,26 +77,24 @@ diffr <- function(text1, text2, clean="none",
       stop("clean argument supplied is neither one of
              the package defaults nor a valid function.")
     }
-    distance_matrix  <- dist(text1_clean, text2_clean)
-    text1_indel_dist <- as.vector(dist(text1_clean, ""))
-    text2_indel_dist <- as.vector(dist(text2_clean, ""))
+    distance_matrix <- dist(text1_clean, text2_clean)
 
   # text alignment
   AlignM  <- text_align(distance_matrix, maxDist, T)
-  AlignDF <- align_matrix_to_align_df(AlignM,
-                                      distance_matrix,
-                                      text1_indel_dist,
-                                      text2_indel_dist)
+  AlignDF <- align_matrix_to_align_df(AlignM, distance_matrix)
 
 
   # results preparation
-  res <- list( text1_orig        = text1,
-               text2_orig        = text2,
-               text1_clean       = text1_clean,
-               text2_clean       = text2_clean,
-               distance_matrix   = distance_matrix,
-               alignment_df      = AlignDF
-  )
+  res <- list( text1_orig=text1,
+               text2_orig=text2,
+               text1_clean=text1_clean,
+               text2_clean=text2_clean,
+               alignment_auto  = cbind( c(1,2,3), c(1,2,3) ),
+               alignment_semi  = cbind( c(1,2,3,3), c(1,2,3,4) ),
+               distance_vauto  = c(0,1,0),
+               distance_vsemi  = c(0,1,0,1),
+               distance_matrix = distance_matrix
+             )
   # return
   if ( all(ret == "all") ) {
     return(res)
