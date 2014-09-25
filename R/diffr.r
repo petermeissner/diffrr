@@ -33,88 +33,80 @@
 #' ## diffr(example_A1_split, example_A2_split)
 
 
-diffr <- function(text1, text2, clean="none",
-                  dist="levenshtein", maxDist="Inf",
-                  sortDF=c(1,2,0), ret="all"){
+diffr <- function(text1=example_A1_split,
+                  text2=example_A2_split,
+                  clean="none",
+                  dist="levenshtein",
+                  maxDist="Inf",
+                  sortDF=c(1,2,0),
+                  ignore="empty",
+                  ret="all"){
 
   # text supplied as character vector?
-   if( class(text1)=="list" & class(text2)=="list" ){
-    text1 <- unlist(text1)
-    text2 <- unlist(text2)
-   }
-   if( class(text1)!="character" | class(text2)!="character" ){
-    stop("Class of texts supplied should be character.")
-   }
+    if( class(text1)=="list" & class(text2)=="list" ){
+      text1 <- unlist(text1)
+      text2 <- unlist(text2)
+    }
+    if( class(text1)!="character" | class(text2)!="character" ){
+      stop("Class of texts supplied should be character.")
+    }
 
-  # Clean Text Functions: either supplied or selected from defaults
-    # 1 checking
-    # 2 selecting/asigning
-    # 3 calculation
-    if(class(clean)=="character" ){
-      if( !(clean %in% names(cleanTextFunctions)) ){
-        stop(paste("No such function as '",clean,"' to be found. Check out names(cleanTextFunctions)"))
-      }
-      clean <- cleanTextFunctions[[clean]]
-    }
-    if( class(clean)!= "function"){
-      stop("clean argument supplied is neither one of
-           the package defaults nor a valid function.")
-    }
-    text1_clean <- clean(text1)
-    text2_clean <- clean(text2)
+  # Ignore Lines
+    ignore <- select_function_option(ignore, ignoreLinesFunctions)
+    text1_ignore <- ignore(text1)
+    text2_ignore <- ignore(text2)
 
-  # Distance Function: either supplied or selected from defaults
-    # 1 checking
-    # 2 selecting/asigning
-    # 3 calculation
-    if(class(dist)=="character" ){
-      if( !(dist %in% names(distanceFunctions)) ){
-        stop(paste("No such function as '",dist,"' to be found.  Check out names(distanceFunctions)"))
-      }
-      dist <- distanceFunctions[[dist]]
-    }
-    if( class(dist)!= "function"){
-      stop("clean argument supplied is neither one of
-             the package defaults nor a valid function.")
-    }
+  # Clean Text
+    clean <- select_function_option(clean, cleanTextFunctions)
+    text1_clean <- text1
+    text2_clean <- text2
+    text1_clean[!text1_ignore] <- clean(text1[!text1_ignore])
+    text2_clean[!text2_ignore] <- clean(text2[!text2_ignore])
+
+  # Distance Calculation
+    dist <- select_function_option(dist, distanceFunctions)
     distance_matrix  <- dist(text1_clean, text2_clean)
+    distance_matrix[text1_ignore , ] <- Inf
+    distance_matrix[ , text2_ignore] <- Inf
     text1_indel_dist <- as.vector(dist(text1_clean, ""))
     text2_indel_dist <- as.vector(dist(text2_clean, ""))
+    text1_indel_dist[text1_ignore] <- NA
+    text2_indel_dist[text2_ignore] <- NA
 
   # text alignment
-  alignM  <- text_align(distance_matrix, maxDist, T)
-  alignDF <- align_matrix_to_align_df(alignM,
-                                      distance_matrix,
-                                      text1_indel_dist,
-                                      text2_indel_dist)
-  if(sortDF[1] == 0){
-    alignDF <- alignDF[ order(
-                          as.numeric(alignDF$lnr1),
-                          as.numeric(alignDF$lnr2)  ), ]
-  }
-  if(sortDF[1] == 1) alignDF <- sort_align_df(alignDF,T)
-  if(sortDF[1] == 2) alignDF <- sort_align_df(alignDF,F)
-
+    alignM  <- text_align(distance_matrix, maxDist, T)
+    alignDF <- align_matrix_to_align_df(alignM,
+                                        distance_matrix,
+                                        text1_indel_dist,
+                                        text2_indel_dist)
+    if(sortDF[1] == 0){
+      alignDF <- alignDF[ order(
+                            as.numeric(alignDF$lnr1),
+                            as.numeric(alignDF$lnr2)  ), ]
+    }
+    if(sortDF[1] == 1) alignDF <- sort_align_df(alignDF,T)
+    if(sortDF[1] == 2) alignDF <- sort_align_df(alignDF,F)
 
   # results preparation
-  res <- list( text1_orig        = text1,
-               text2_orig        = text2,
-               text1_clean       = text1_clean,
-               text2_clean       = text2_clean,
-               distance_matrix   = distance_matrix,
-               alignment_df      = alignDF
-  )
+    res <- list( text1_orig        = text1,
+                 text2_orig        = text2,
+                 text1_clean       = text1_clean,
+                 text2_clean       = text2_clean,
+                 distance_matrix   = distance_matrix,
+                 alignment_df      = alignDF
+    )
+
   # return
-  if ( all(ret == "all") ) {
-    return(res)
-  }
-  if ( all(ret == "default") ) {
-    return(res$alignment_auto)
-  }
-  if ( length(ret)>1 ){
-    return(res[ret])
-  }
- }
+    if ( all(ret == "all") ) {
+      return(res)
+    }
+    if ( all(ret == "default") ) {
+      return(res$alignment_auto)
+    }
+    if ( length(ret)>1 ){
+      return(res[ret])
+    }
+}
 
 
 

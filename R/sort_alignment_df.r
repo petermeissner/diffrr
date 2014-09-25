@@ -6,11 +6,12 @@
 sort_align_df <- function(alignDF, text1First=T){
   lnr1     <- alignDF$lnr1
   lnr2     <- alignDF$lnr2
-  data_nr  <- seq_len(max(lnr1, lnr2, na.rm=T))
+  looper   <- seq_len(max(lnr1, lnr2, na.rm=T))
+  data_nr  <- seq_along(alignDF[,1])
 
   sorter <- NULL
   if ( text1First == T  ){
-    for ( i in data_nr ){
+    for ( i in looper ){
       sorter <- c(  sorter                                            ,
                     data_nr[ i==lnr1 & !is.na(lnr1) &   is.na(lnr2) ] ,
                     data_nr[ i==lnr1 & !is.na(lnr1) &  !is.na(lnr2) ] ,

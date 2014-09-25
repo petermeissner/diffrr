@@ -1,3 +1,14 @@
+#' function using tistance matrix to align lines accordingly
+#'
+#' @param distM distance matrix to base alignment on
+#' @param maxDist beyonbd this distance all possible line matches are coded as
+#'   deletions and respectively insertions
+#' @param retMatrix should the result be returned as boolean matrix or as data
+#'   frame
+#'
+
+
+
 text_align <- function(distM, maxDist=Inf, retMatrix=T){
   # evaluating maxDiff option to numeric max distance
   md     <- .choose_maxdist_option(distM, maxDist)

@@ -2,6 +2,9 @@
 
 ## diffr 0.1.2
 
+- alignment type added to alignment_df output
+- outsourced textCleanFunctions, distanceFunctions selection in general purpose function
+- possibility to ignore lines (effects cleaning of text and alingment but distance calculation still is done for all and only later on ignores take effect)
 - sorting of alignDF implemented 
 - tested on Win7, Win8, Ubuntu, Mac
 - some adjustements to the dist measure of lines that were not matched (insertions and deletions): instead of `NA` there will be a distance adequate to an insertion / deletion (distance between a line and an enmpty string)

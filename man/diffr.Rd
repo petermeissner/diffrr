@@ -8,8 +8,9 @@
 \alias{text_align,}
 \title{A function for aligning text and measuring its distance.}
 \usage{
-diffr(text1, text2, clean = "none", dist = "levenshtein", maxDist = "Inf",
-  sortDF = c(1, 2, 0), ret = "all")
+diffr(text1 = example_A1_split, text2 = example_A2_split, clean = "none",
+  dist = "levenshtein", maxDist = "Inf", sortDF = c(1, 2, 0),
+  ignore = "empty", ret = "all")
 }
 \arguments{
 \item{text1}{first text; expected to be a character vector; each vector

@@ -3,7 +3,7 @@
 \name{example_A2}
 \alias{example_A2}
 \title{second text of ruinning example A}
-\format{\preformatted{ chr "This is an important\\nnotice! It should\\ntherefore be located at\\nthe beginning of this\\ndocument!\\n \\nThis part of the\\ndocume"| __truncated__
+\format{\preformatted{ chr "This is an important\\nnotice! It should\\ntherefore be located at\\nthe beginning of this\\ndocument!\\n\\nThis part of the\\ndocumen"| __truncated__
 }}
 \usage{
 example_A2
