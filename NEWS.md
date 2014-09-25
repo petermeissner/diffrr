@@ -2,7 +2,8 @@
 
 ## diffr 0.1.2
 
-- TBD: tested on Win7, Win8, Ubuntu, Mac
+- sorting of alignDF implemented 
+- tested on Win7, Win8, Ubuntu, Mac
 - some adjustements to the dist measure of lines that were not matched (insertions and deletions): instead of `NA` there will be a distance adequate to an insertion / deletion (distance between a line and an enmpty string)
 - adjusted output of `diffr()`: 
     - less is more -- number of outputs reduced to the following: 

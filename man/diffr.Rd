@@ -9,7 +9,7 @@
 \title{A function for aligning text and measuring its distance.}
 \usage{
 diffr(text1, text2, clean = "none", dist = "levenshtein", maxDist = "Inf",
-  ret = "all")
+  sortDF = c(1, 2, 0), ret = "all")
 }
 \arguments{
 \item{text1}{first text; expected to be a character vector; each vector

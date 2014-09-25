@@ -35,7 +35,7 @@
 
 diffr <- function(text1, text2, clean="none",
                   dist="levenshtein", maxDist="Inf",
-                  ret="all"){
+                  sortDF=c(1,2,0), ret="all"){
 
   # text supplied as character vector?
    if( class(text1)=="list" & class(text2)=="list" ){
@@ -82,11 +82,18 @@ diffr <- function(text1, text2, clean="none",
     text2_indel_dist <- as.vector(dist(text2_clean, ""))
 
   # text alignment
-  AlignM  <- text_align(distance_matrix, maxDist, T)
-  AlignDF <- align_matrix_to_align_df(AlignM,
+  alignM  <- text_align(distance_matrix, maxDist, T)
+  alignDF <- align_matrix_to_align_df(alignM,
                                       distance_matrix,
                                       text1_indel_dist,
                                       text2_indel_dist)
+  if(sortDF[1] == 0){
+    alignDF <- alignDF[ order(
+                          as.numeric(alignDF$lnr1),
+                          as.numeric(alignDF$lnr2)  ), ]
+  }
+  if(sortDF[1] == 1) alignDF <- sort_align_df(alignDF,T)
+  if(sortDF[1] == 2) alignDF <- sort_align_df(alignDF,F)
 
 
   # results preparation
@@ -95,7 +102,7 @@ diffr <- function(text1, text2, clean="none",
                text1_clean       = text1_clean,
                text2_clean       = text2_clean,
                distance_matrix   = distance_matrix,
-               alignment_df      = AlignDF
+               alignment_df      = alignDF
   )
   # return
   if ( all(ret == "all") ) {
