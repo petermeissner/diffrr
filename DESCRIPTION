@@ -1,7 +1,7 @@
 Package: diffr
 Title: Comparing and aligning text.
 Date: 2014-09-23
-Version: 0.1.1.90000021
+Version: 0.1.2
 Author: Peter Meissner (retep.meissner@gmail.com)
 Meintainer: Peter Meissner (retep.meissner@gmail.com)
 Authors@R: person("Peter", "Meissner", email = "retep.meissner@gmail.com",
