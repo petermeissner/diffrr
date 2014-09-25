@@ -27,5 +27,7 @@ align_matrix_to_align_df <- function(alignM,
   if ( length(unused_cols)>0 ){
     df <- rbind(df, cbind(NA, unused_cols, cols_indel_dist))
   }
-  return(as.data.frame(df))
+  df <- as.data.frame(df)
+  names(df) <- c("lnr1","lnr2","distance")
+  return(df)
 }

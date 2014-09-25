@@ -1,5 +1,10 @@
+# README
+Peter Meißner  
+Wednesday, September 24, 2014  
+
+
 # diffr 
-Comparing and aligning text.
+A package for measuring change between different versions of text
 
 ## Description
 
@@ -15,6 +20,7 @@ while asking for human input on more complex decissions.
 
 ## Installation
 
+
     # require(devtools)
     # install_github("petermeissner/diffr")
     # require(diffr)
@@ -24,3 +30,99 @@ while asking for human input on more complex decissions.
 
 - http://www.polver.uni-konstanz.de/sieberer/forschung/
 
+
+## Example Usage
+
+
+
+```r
+    library(diffr)
+
+    res <- diffr(example_A1_split, example_A2_split)
+```
+
+```
+## Loading required package: cba
+## Loading required package: grid
+## Loading required package: proxy
+## 
+## Attaching package: 'proxy'
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     as.dist, dist
+```
+
+```r
+    names(res)
+```
+
+```
+## [1] "text1_orig"       "text2_orig"       "text1_clean"     
+## [4] "text2_clean"      "distance_matrix"  "alignment_matrix"
+## [7] "alignment_df"
+```
+
+```r
+    sum(res$alignment_df$dist)
+```
+
+```
+## [1] 194
+```
+
+```r
+    res$alignment_df
+```
+
+```
+##    row col dist
+## 1   10   6    0
+## 2    1   7    0
+## 3    2   8    0
+## 4    3   9    0
+## 5    4  10    0
+## 6    5  11    0
+## 7    6  12    0
+## 8    7  13    0
+## 9    8  14   18
+## 10  15  15    0
+## 11  16  16    0
+## 12  17  17    2
+## 13  18  18    0
+## 14  19  19    0
+## 15  20  20    0
+## 16  21  21    0
+## 17  22  22    0
+## 18  23  23    0
+## 19  24  24    0
+## 20  14  25   11
+## 21  11  26    0
+## 22  12  28   17
+## 23  25  29    0
+## 24  26  30    0
+## 25  27  31    0
+## 26  28  32    0
+## 27  29  33    0
+## 28   9  NA    8
+## 29  13  NA   25
+## 30  NA   1   20
+## 31  NA   2   17
+## 32  NA   3   23
+## 33  NA   4   21
+## 34  NA   5    9
+## 35  NA  27   23
+```
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

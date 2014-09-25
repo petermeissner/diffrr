@@ -52,7 +52,7 @@ diffr <- function(text1, text2, clean="none",
     # 3 calculation
     if(class(clean)=="character" ){
       if( !(clean %in% names(cleanTextFunctions)) ){
-        stop(paste("No such function as '",clean,"' to be found"))
+        stop(paste("No such function as '",clean,"' to be found. Check out names(cleanTextFunctions)"))
       }
       clean <- cleanTextFunctions[[clean]]
     }
@@ -69,7 +69,7 @@ diffr <- function(text1, text2, clean="none",
     # 3 calculation
     if(class(dist)=="character" ){
       if( !(dist %in% names(distanceFunctions)) ){
-        stop(paste("No such function as '",dist,"' to be found"))
+        stop(paste("No such function as '",dist,"' to be found.  Check out names(distanceFunctions)""))
       }
       dist <- distanceFunctions[[dist]]
     }
