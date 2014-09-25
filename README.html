@@ -93,8 +93,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## 
 ##     as.dist, dist</code></pre>
 <pre class="r"><code>    names(res)</code></pre>
-<pre><code>## [1] &quot;text1_orig&quot;      &quot;text2_orig&quot;      &quot;text1_clean&quot;     &quot;text2_clean&quot;    
-## [5] &quot;distance_matrix&quot; &quot;alignment_df&quot;</code></pre>
+<pre><code>## [1] &quot;text1_orig&quot;      &quot;text2_orig&quot;      &quot;text1_clean&quot;     &quot;text2_clean&quot;     &quot;distance_matrix&quot; &quot;alignment_df&quot;</code></pre>
 <pre class="r"><code>    # total difference between both texts:
     sum(res$alignment_df$dist)</code></pre>
 <pre><code>## [1] 46</code></pre>
@@ -145,98 +144,56 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## 42   NA   27        3
 ## 43   NA   28        3</code></pre>
 <pre class="r"><code>    # alignment of texts with texts
-    cbind( res$alignment_df, 
-           text1=res$text1_orig[res$alignment_df$lnr1] ,
-           text2=res$text2_orig[res$alignment_df$lnr2] 
-         )</code></pre>
-<pre><code>##    lnr1 lnr2 distance                        text1
-## 1    10    6        0                             
-## 2     1    7        0             This part of the
-## 3     2    8        0      document has stayed the
-## 4     3    9        0         same from version to
-## 5     4   10        0       version.  It shouldn't
-## 6     5   11        0       be shown if it doesn't
-## 7     6   12        0     change.  Otherwise, that
-## 8     7   13        0      would not be helping to
-## 9    15   15        0                             
-## 10   16   16        0     It is important to spell
-## 11   17   17        2      check this dokument. On
-## 12   18   18        0            the other hand, a
-## 13   19   19        0        misspelled word isn't
-## 14   20   20        0        the end of the world.
-## 15   21   21        0       Nothing in the rest of
-## 16   22   22        0      this paragraph needs to
-## 17   23   23        0       be changed. Things can
-## 18   24   24        0           be added after it.
-## 19   11   26        0      This paragraph contains
-## 20   25   29        0                             
-## 21   26   30        0             Source of Text: 
-## 22   27   31        0    Diff. (2014, August 26). 
-## 23   28   32        0               In Wikipedia, 
-## 24   29   33        0       The Free Encyclopedia.
-## 25   30   34        0            Retrieved 10:14, 
-## 26   31   35        0         September 24, 2014, 
-## 27   32   36        0 from http://en.wikipedia.org
-## 28   33   37        0      /w/index.php?title=Diff
-## 29   34   38        0             &amp;oldid=622929855
-## 30    8   NA        5     compress the size of the
-## 31    9   NA        1                     changes.
-## 32   12   NA        4       text that is outdated.
-## 33   13   NA        6    It will be deleted in the
-## 34   14   NA        2                 near future.
-## 35   NA    1        4                         &lt;NA&gt;
-## 36   NA    2        4                         &lt;NA&gt;
-## 37   NA    3        4                         &lt;NA&gt;
-## 38   NA    4        4                         &lt;NA&gt;
-## 39   NA    5        1                         &lt;NA&gt;
-## 40   NA   14        2                         &lt;NA&gt;
-## 41   NA   25        1                         &lt;NA&gt;
-## 42   NA   27        3                         &lt;NA&gt;
-## 43   NA   28        3                         &lt;NA&gt;
-##                           text2
-## 1                              
-## 2              This part of the
-## 3       document has stayed the
-## 4          same from version to
-## 5        version.  It shouldn't
-## 6        be shown if it doesn't
-## 7      change.  Otherwise, that
-## 8       would not be helping to
-## 9                              
-## 10     It is important to spell
-## 11      check this document. On
-## 12            the other hand, a
-## 13        misspelled word isn't
-## 14        the end of the world.
-## 15       Nothing in the rest of
-## 16      this paragraph needs to
-## 17       be changed. Things can
-## 18           be added after it.
-## 19      This paragraph contains
-## 20                             
-## 21             Source of Text: 
-## 22    Diff. (2014, August 26). 
-## 23               In Wikipedia, 
-## 24       The Free Encyclopedia.
-## 25            Retrieved 10:14, 
-## 26         September 24, 2014, 
-## 27 from http://en.wikipedia.org
-## 28      /w/index.php?title=Diff
-## 29             &amp;oldid=622929855
-## 30                         &lt;NA&gt;
-## 31                         &lt;NA&gt;
-## 32                         &lt;NA&gt;
-## 33                         &lt;NA&gt;
-## 34                         &lt;NA&gt;
-## 35         This is an important
-## 36            notice! It should
-## 37      therefore be located at
-## 38        the beginning of this
-## 39                    document!
-## 40           compress anything.
-## 41                             
-## 42      important new additions
-## 43            to this document.</code></pre>
+    data.frame( lnr1  = res$alignment_df$lnr1, 
+                lnr2  = res$alignment_df$lnr2, 
+                text1 = res$text1_orig[res$alignment_df$lnr1] ,
+                text2 = res$text2_orig[res$alignment_df$lnr2] ,
+                dist  = res$alignment_df$distance
+         )[ order(res$alignment_df$lnr1,res$alignment_df$lnr2),]</code></pre>
+<pre><code>##    lnr1 lnr2                        text1                        text2 dist
+## 2     1    7             This part of the             This part of the    0
+## 3     2    8      document has stayed the      document has stayed the    0
+## 4     3    9         same from version to         same from version to    0
+## 5     4   10       version.  It shouldn't       version.  It shouldn't    0
+## 6     5   11       be shown if it doesn't       be shown if it doesn't    0
+## 7     6   12     change.  Otherwise, that     change.  Otherwise, that    0
+## 8     7   13      would not be helping to      would not be helping to    0
+## 30    8   NA     compress the size of the                         &lt;NA&gt;    5
+## 31    9   NA                     changes.                         &lt;NA&gt;    1
+## 1    10    6                                                              0
+## 19   11   26      This paragraph contains      This paragraph contains    0
+## 32   12   NA       text that is outdated.                         &lt;NA&gt;    4
+## 33   13   NA    It will be deleted in the                         &lt;NA&gt;    6
+## 34   14   NA                 near future.                         &lt;NA&gt;    2
+## 9    15   15                                                              0
+## 10   16   16     It is important to spell     It is important to spell    0
+## 11   17   17      check this dokument. On      check this document. On    2
+## 12   18   18            the other hand, a            the other hand, a    0
+## 13   19   19        misspelled word isn't        misspelled word isn't    0
+## 14   20   20        the end of the world.        the end of the world.    0
+## 15   21   21       Nothing in the rest of       Nothing in the rest of    0
+## 16   22   22      this paragraph needs to      this paragraph needs to    0
+## 17   23   23       be changed. Things can       be changed. Things can    0
+## 18   24   24           be added after it.           be added after it.    0
+## 20   25   29                                                              0
+## 21   26   30             Source of Text:              Source of Text:     0
+## 22   27   31    Diff. (2014, August 26).     Diff. (2014, August 26).     0
+## 23   28   32               In Wikipedia,                In Wikipedia,     0
+## 24   29   33       The Free Encyclopedia.       The Free Encyclopedia.    0
+## 25   30   34            Retrieved 10:14,             Retrieved 10:14,     0
+## 26   31   35         September 24, 2014,          September 24, 2014,     0
+## 27   32   36 from http://en.wikipedia.org from http://en.wikipedia.org    0
+## 28   33   37      /w/index.php?title=Diff      /w/index.php?title=Diff    0
+## 29   34   38             &amp;oldid=622929855             &amp;oldid=622929855    0
+## 35   NA    1                         &lt;NA&gt;         This is an important    4
+## 36   NA    2                         &lt;NA&gt;            notice! It should    4
+## 37   NA    3                         &lt;NA&gt;      therefore be located at    4
+## 38   NA    4                         &lt;NA&gt;        the beginning of this    4
+## 39   NA    5                         &lt;NA&gt;                    document!    1
+## 40   NA   14                         &lt;NA&gt;           compress anything.    2
+## 41   NA   25                         &lt;NA&gt;                                 1
+## 42   NA   27                         &lt;NA&gt;      important new additions    3
+## 43   NA   28                         &lt;NA&gt;            to this document.    3</code></pre>
 </div>
 </div>
 
