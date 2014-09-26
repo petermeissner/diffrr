@@ -2,33 +2,27 @@
 \docType{data}
 \name{distanceFunctions}
 \alias{distanceFunctions}
-\title{Predefined similarity functions saved in a list.}
-\format{list of functions}
+\title{Set of predefined functions for diffr()}
+\format{\preformatted{List of 4
+ $ levenshtein:function (text1, text2)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 10 17 14 3 17 3 10 14
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007dc89e8> 
+ $ levenwords :function (text1, text2)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 17 17 23 3 17 3 17 23
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007dc89e8> 
+ $ bow        :function (text1, text2)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 26 11 48 3 11 3 26 48
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007dc89e8> 
+ $ idep       :function (text1, text2)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 51 11 73 3 11 3 51 73
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007dc89e8> 
+}}
 \usage{
 distanceFunctions
 }
-\arguments{
-\item{nchar}{similarity calculated based on number of characters}
-
-\item{nwords}{similarity calculated based on number of words}
-
-\item{leven}{similarity calculated based on Levenshtein distance (\code{dist()} from \code{proxy} package used for that)}
-
-\item{levenwords}{similarity calculated based on Levenshtein distance that uses words instead of characters as smallest parts (\code{dist()} from \code{proxy} package used for that)}
-
-\item{bow}{similarity calculated based on}
-
-\item{idep}{see bow (distance measure used within IDEP project work)}
-}
 \description{
-\code{similarityFunctions} is a list of predefined functions for text
-distance calculation
-}
-\examples{
-names(distanceFunctions)
-}
-\seealso{
-\code{\link[proxy]{pr_DB}} or try: \code{proxy::pr_DB$get_entries(name = NULL, pattern = NULL)}.
+Set of functions to calculate distance between each line of first text and
+each line of second text.
 }
 \keyword{datasets}
 

@@ -2,21 +2,23 @@
 \docType{data}
 \name{ignoreLinesFunctions}
 \alias{ignoreLinesFunctions}
-\title{Predefined functions to determine which lines to ignore for distance
-calculation and alignment.}
-\format{list of functions}
+\title{Set of predefined functions for diffr()}
+\format{\preformatted{List of 3
+ $ idep :function (text)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 8 10 11 3 10 3 8 11
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007218330> 
+ $ empty:function (text)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 13 11 15 3 11 3 13 15
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007218330> 
+ $ none :function (text)  
+  ..- attr(*, "srcref")=Class 'srcref'  atomic [1:8] 17 11 19 3 11 3 17 19
+  .. .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x0000000007218330> 
+}}
 \usage{
 ignoreLinesFunctions
 }
-\arguments{
-\item{idep}{ingore empty lines as well as all those starting with '#§#'
-(ignore procedure used within IDEP project work)}
-
-\item{empty}{ingore empty lines}
-}
 \description{
-Predefined functions to determine which lines to ignore for distance
-calculation and alignment.
+Set of functions to determine which lines of text to be ignored.
 }
 \keyword{datasets}
 

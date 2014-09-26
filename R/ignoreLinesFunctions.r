@@ -1,12 +1,7 @@
-#' Predefined functions to determine which lines to ignore for distance
-#' calculation and alignment.
+#' Set of predefined functions for diffr()
 #'
-#' @param idep ingore empty lines as well as all those starting with '#§#'
-#'   (ignore procedure used within IDEP project work)
-#' @param empty ingore empty lines
+#' Set of functions to determine which lines of text to be ignored.
 #'
-#' @format list of functions
-
 
 ignoreLinesFunctions <- list(
 

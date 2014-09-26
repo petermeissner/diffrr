@@ -1,7 +1,9 @@
 #' Function that transforms an alignment result in matrix form into an alignment result in data frame form
 #'
-#'@param alignM an alingment matrix
-#'@param distM  an distance matrix of same dimensions as alignM
+#'@param alignM An alingment matrix.
+#'@param distM  An distance matrix of same dimensions as alignM.
+#'@param text1_indel_dist What distance should be assigned if an particular line of this text has been deleted respectively inserted?
+#'@param text2_indel_dist See above.
 
 align_matrix_to_align_df <- function(alignM,
                                      distM=NULL,

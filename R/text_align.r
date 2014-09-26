@@ -1,17 +1,22 @@
-#' function using tistance matrix to align lines accordingly
+#' Aligning text.
 #'
-#' @param distM distance matrix to base alignment on
-#' @param maxDist beyonbd this distance all possible line matches are coded as
-#'   deletions and respectively insertions
-#' @param retMatrix should the result be returned as boolean matrix or as data
-#'   frame
+#' A helper function for \code{diffr()} that uses a distance matrix to align
+#' text lines.
+#'
+#' Gives back an alignment matrix (boolean) or an data frame with line numbers.
+#'
+#' @param distM Distance matrix to base alignment on.
+#' @param maxDist Maximum distance below which two lines might be considered to
+#'   match.
+#' @param retMatrix Should the result be returned as boolean matrix or as data
+#'   frame.
 #'
 
 
 
 text_align <- function(distM, maxDist=Inf, retMatrix=T){
   # evaluating maxDiff option to numeric max distance
-  md     <- .choose_maxdist_option(distM, maxDist)
+  md     <- choose_maxdist_option(distM, maxDist)
   distM[ distM > md ]  <- Inf
 
   # some general variables and preparations

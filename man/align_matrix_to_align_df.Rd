@@ -7,9 +7,13 @@ align_matrix_to_align_df(alignM, distM = NULL, text1_indel_dist = NA,
   text2_indel_dist = NA)
 }
 \arguments{
-\item{alignM}{an alingment matrix}
+\item{alignM}{An alingment matrix.}
 
-\item{distM}{an distance matrix of same dimensions as alignM}
+\item{distM}{An distance matrix of same dimensions as alignM.}
+
+\item{text1_indel_dist}{What distance should be assigned if an particular line of this text has been deleted respectively inserted?}
+
+\item{text2_indel_dist}{See above.}
 }
 \description{
 Function that transforms an alignment result in matrix form into an alignment result in data frame form

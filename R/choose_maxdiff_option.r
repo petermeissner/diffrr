@@ -1,9 +1,11 @@
 #' Function for translating maxdiff option into value
 #'
-#' @aliases text_align
+#' @param distM A distance matrixe calculated by one of the functions from
+#'   \code{distanceFunctions}.
 #'
+#' @param maxDist The maxDist option to decide upon.
 
-.choose_maxdist_option <- function(distM, maxDist="Inf"){
+choose_maxdist_option <- function(distM, maxDist="Inf"){
   # handling maxDist parameters
   # maxDist might be set to "Inf", "auto", "10%" or some specific value
   md_inf  <- grepl("Inf",    maxDist[1], ignore.case=T) | maxDist==Inf
