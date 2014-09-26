@@ -1,12 +1,6 @@
-#' Predefined cleanText functions saved in a list.
+#' Set of predefined functions for diffr()
 #'
-#' \code{cleanTextFunctions} is a list of predefined functions for text cleansing
-#' to be applied before diffr() calculates distances and alignes text
-#'
-#' @param none does not transform the text at all
-#' @param idep used in the data gathering of IDEP (Institutional Design in European Parliaments)
-#' working group see citation(diffr) as well as
-#' https://github.com/petermeissner/diffr for further information
+#' Set of functions to clean text before distances are calculated.
 #'
 #'
 #' @format list of functions
@@ -15,41 +9,41 @@ cleanTextFunctions <- list(
   idep = function(text){
     idep.regex <- c( "\t",                       #1 tabs to space
                      "  ",                       #2 double spaces to space
-                     "^( ?§\\.? ?[[:digit:]]{1,3} ?[[:alpha:]]?\\.? ?)", #3 del paragraph symbol and number at beginning  e.g.: "§81 "    "§ 81"
+                     "^( ?\u00A7\\.? ?[[:digit:]]{1,3} ?[[:alpha:]]?\\.? ?)", #3 del paragraph symbol and number at beginning  e.g.: "\u00A781 "    "\u00A7 81"
                      "^(\\(?[[:digit:]]{1,3}\\) ?)",  #4 del digit enclosed in paratheses at beginning e.g.: "(1) "    "1) "
                      "^( ?[[:alpha:]]{1,4}\\. )",  #5 del roman numbers or letter items             e.g.: "VIII. "
                      "^(\\(?[[:alpha:]]\\))",    #6 del letter with parantheses                   e.g.: "(a) "    "a) "
                      "^([[:digit:]]{1,3}[[:alpha:]]?\\.)", # del digits followed by dot and space     e.g.: "1. "     "1A."
                      "^( )",     #8
                      "^(\\-)",   #9
-                     "^(\\—\\(?[[:digit:]]?\\)?)", #10
+                     "^(\u2014\\(?[[:digit:]]?\\)?)", #10
                      "^( )", #11
-                     "^[[:digit:]]{1,3}\\.—\\([[:digit:]]\\) ", #12
+                     "^[[:digit:]]{1,3}\\.\u2014\\([[:digit:]]\\) ", #12
                      "^( ?\\(?[[:alpha:]]{1,4}\\) )", #13
                      "^(\\([[:digit:]]{1,3}\\) )", #14
-                     "^([[:digit:]]{1,2},—\\([[:digit:]]{1,2}\\) )", #15
+                     "^([[:digit:]]{1,2},\u2014\\([[:digit:]]{1,2}\\) )", #15
                      "^([[:digit:]]\\. )", #16
-                     "^([[:digit:]]{1,3}\\:\\—\\([[:digit:]]{1,3}\\))", #17
+                     "^([[:digit:]]{1,3}\\:\u2014\\([[:digit:]]{1,3}\\))", #17
                      "^(capitulo [[:alpha:]]{1,10}\\.?)", #18
                      "^(articulo [[:digit:]]{1,3}\\.?)", #19
                      "^(titulo [[:alpha:]]{1,10}\\.?)", #20
                      "^(seccion [[:digit:]]{1,10}\\.?)", #21
                      "^(seccion [[:alpha:]]{1,10}\\.?)", #22
                      "^(primera.?-? ?|segunda.?-? ?|tercera.?-? ?|cuarta.?-? ?|quinta.?-? ?|sexta.?-? ?|septima.?-? ?|octava.?-? ?|novena.?-? ?|decima.?-? ?)",
-                     "^([[:digit:]]{1,3} ?§.? ?)", #24
+                     "^([[:digit:]]{1,3} ?\u00A7.? ?)", #24
                      "^([[:digit:]]{1,3} Kap\\. )", #25
-                     "^(section [[:digit:]]{1,3} ?—?-? ?)", #26
-                     "^(chapter ?[[:digit:]]{1,3} ?—?-? ?)", #27
-                     "^(Art[[:alpha:]]?{1,7}.? ?[[:digit:]]{1,3}[[:alpha:]]?{1,10}-?[[:alpha:]]?{1,10}[[:digit:]]?{1,3}.?°?)", #28
+                     "^(section [[:digit:]]{1,3} ?\u2014?-? ?)", #26
+                     "^(chapter ?[[:digit:]]{1,3} ?\u2014?-? ?)", #27
+                     "^(Art[[:alpha:]]?{1,7}.? ?[[:digit:]]{1,3}[[:alpha:]]?{1,10}-?[[:alpha:]]?{1,10}[[:digit:]]?{1,3}.?\u00B0?)", #28
                      "^(CHAP[[:alpha:]]?{1,5}.? [[:digit:]]?{1,3}[[:alpha:]]?{1,10}.? ?)", #29
-                     "^([[:digit:]]{1,3}°? )", #30
-                     "^([[:digit:]]{1,3}°? )", #31
+                     "^([[:digit:]]{1,3}\u00B0? )", #30
+                     "^([[:digit:]]{1,3}\u00B0? )", #31
                      "^(er)$", #32
-                     "^([[:alpha:]]{1,6}\\. ?–? ?)", #33
-                     "^(•)", #34
+                     "^([[:alpha:]]{1,6}\\. ?\u2014? ?)", #33
+                     "^(.)", #34
                      "^(PART [[:alpha:]]{1,10})", #35
                      "^(CAPO [[:alpha:]]{1,10}\\.? )", #36
-                     "^([[:digit:]]{1,3}°\\) )", #37
+                     "^([[:digit:]]{1,3}\u00B0\\) )", #37
                      "^([[:digit:]]{1,3}-[[:alpha:]]{1,4}\\.? ?)", #38
                      "^([[:alpha:]]{1,6} - )", #39
                      "^(Parte [[:alpha:]]{1,7} - )", #40

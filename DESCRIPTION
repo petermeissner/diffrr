@@ -1,7 +1,7 @@
 Package: diffr
 Title: Comparing and aligning text
 Date: 2014-09-23
-Version: 0.1.1
+Version: 0.1.2
 Author: Peter Meissner (retep.meissner@gmail.com)
 Meintainer: Peter Meissner (retep.meissner@gmail.com)
 Authors@R: person("Peter", "Meissner", email = "retep.meissner@gmail.com",
@@ -16,7 +16,7 @@ Description: A package for measuring change between different versions of text
     clear alignments of 100% matches and 0% matches while asking for human
     input on more complex decissions.
 Depends:
-    R (>= 3.1.1)
+    R (>= 3.0.0)
 License: MIT + file LICENSE
 LazyData: true
 Imports:

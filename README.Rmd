@@ -1,0 +1,72 @@
+---
+title: "README"
+output:
+  html_document:
+    keep_md: yes
+---
+
+
+# diffr 
+A package for measuring change between different versions of text
+
+## Description
+
+
+A package for measuring change between different versions of text by automatically
+or semi-automatically aligning text lines and measuring the change. It works kind of like diff or version control systems but focuses on **measuring** the **change** in contrast to focusing on solid version control. Furthermore, the package allows for (possibly user made) text cleaning functions that are applied before comparison. Another feature is the semi-automatic alignment that allows for fast computer decissions on clear alignments of 100% matches and 0% matches while asking for human input on more complex decissions.
+  
+
+## Installation
+
+```{r, eval=FALSE}
+    devtools::install_github("petermeissner/diffr")
+    require(diffr)
+```
+    
+## Links
+
+- http://www.polver.uni-konstanz.de/sieberer/forschung/
+
+
+## Example Usage
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 160)
+```
+
+```{r}
+    require(diffr)
+
+    res <- diffr(example_A1_split, example_A2_split, 
+                 clean="none", dist="levenwords", sortDF=0)
+
+    names(res)
+    
+    # total difference between both texts:
+    sum(res$alignment_df$dist, na.rm=T)
+
+    # alignment of texts
+    head(res$alignment_df)
+
+    # alignment of texts with texts
+    data.frame( lnr1  = res$alignment_df$lnr1, 
+                lnr2  = res$alignment_df$lnr2, 
+                text1 = res$text1_orig[res$alignment_df$lnr1] ,
+                text2 = res$text2_orig[res$alignment_df$lnr2] ,
+                dist  = res$alignment_df$distance,
+                type  = res$alignment_df$type
+         )
+```
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

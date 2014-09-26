@@ -1,109 +1,160 @@
 #' A function for aligning text and measuring its distance.
 #'
-#' @aliases text_align, example_A1, example_A2, example_A1_split,
-#'   example_A2_split
+#' This function represents the heart of the diffr package. It can be used to
+#' analyse changes made to texts by comparing two versions of the same text.
 #'
-#' @param text1 first text; expected to be a character vector; each vector
-#'   element of text1 will be compared to each element of text2
-#' @param text2 see text1
+#' The function tries to align unchanged as well as changed lines to each other
+#' and allows to measure the amount of change that occured per line as well as
+#' for the whole text.
 #'
-#'   (\code{file=FALSE}) or as file path (the default with \code{file=TRUE}).
+#' Features of the funtion include choosing between text cleansing functions,
+#' distance functions and line ignore functions or to use functions provided by
+#' the user instead. The alignement of the text lines can in addition be tweaked
+#' by the use of the maxDist option that allows for a maximum distance for two
+#' text lines to be considered as matches. Output can be tweaked by three
+#' differing sorting algorithms.
+#'
+#' @aliases example_A1, example_A2, example_A1_split, example_A2_split,
+#'
+#' @param text1 First text. Expected to be a character vector or list with each
+#'   item repesenting a line. Lists will be transformed to character vectors via
+#'   \code{unlist()}. Each vector element of text1 will be compared to each
+#'   element of text2.
+#'
+#' @param text2 Second text. See \code{text1}.
+#'
 #' @param clean The function to be applied to each line of the text prior to
-#'   alignment and difference measurement.
+#'   alignment and difference measurement. The parameter might either be a
+#'   string referring to the name of one cleansing function provided by the
+#'   package (see \code{names(cleanTextFunctions)}) or should be a user supplied
+#'   function. Text cleansing functions are expected to accept one character
+#'   vectors as argument and to return a character vector of the very same
+#'   length.
 #'
-#' @param dist the name of one of the distance functions provided by the package
-#'   or a user made function to be use instead. Such a function would be
-#'   expected to take two texts as argument and return a distance matrix wit
-#'   rows referring to the first text and columns referring to the second text.
-#'   To get an overview over the distance functions provided at the moment use:
-#'   \code{names(distanceFunctions)}
+#' @param dist The function to be used to calculate distances between text lines
+#'   to be used to do the alignment later on. The parameter might either be a
+#'   string referring to the name of one distance function provided by the
+#'   package (see \code{names(distanceFunctions)}) or should be a user supplied
+#'   function. Distance functions are expected to accept character vectors as
+#'   first and second argument and to return a matrix of distances between text1
+#'   and text2 as intersection between the i_th line and the j_th column -- rows
+#'   represent text1 lines and columns represent text2 lines.
 #'
-#' @param maxdiff TOBEWRITTEN
+#' @param ignore The function to be used to decide whether or not a particular
+#'   text line should be excluded from calculations -- distances will still be
+#'   calculated (so ignoring lines wont do much about performance) but they are
+#'   neither cleaned nor considered for alignment, furthermore those lines do
+#'   not count for the overall distance of the text. The parameter might either
+#'   be a string referring to the name of one ignore function provided by the
+#'   package (see \code{names(ingoreLinesFunctions)}) or should be a user
+#'   supplied function. Ignore functions are expected to accept one character
+#'   vector as argument and to return a boolean vector of the very same length
+#'   that with TRUE for those lines to be ignored and FALSE otherwise.
 #'
+#' @param maxDist This parameter holds the maximum distance below that it is
+#'   acceptable for two lines to be considered as matches. maxDist migt either
+#'   be supplied as numeric defining the maximum distance in absolute terms or
+#'   it might be a string combined of a number between 0 and 100 as well as a \%
+#'   character t indicate using a certain percentile of the maximum distance
+#'   found between two lines as cut off point.
+#'
+#' @param sortDF Selects the sorting priority for \code{alignment_df}: Either
+#'   \code{0} for no priority, \code{1} for first text priority, or  \code{2}
+#'   for second text priority.
+#'
+#' @param ret The parameter defines what should be returned by the function. The
+#'   default value is 'all' while another reasonable value might be 'defaut' to
+#'   get only the alignment data frame. Furthermore, one can supply a vector
+#'   with the names of those objects that should be returned:
+#'   \code{c("text1_orig", "text2_orig", "text1_clean", "text2_clean",
+#'   "distance_matrix", "alignment_df")}.
 #'
 #' @return The function returns a list with items: \itemize{ \item
 #'   \code{text1_orig} and \code{text2_orig} holding the original texts, \item
 #'   \code{text1_clean} and \code{text2_clean} holding the texts after cleaning,
-#'   \item \code{alignment_auto} and \code{alignment_semi} data frames holding
-#'   the corresponding line numbers from \code{text1} and \code{text2} and the
-#'   distance between them \item \code{distance_matrix} a matrix of distances
+#'   \item \code{alignment_df} data frame holding the corresponding line numbers
+#'   from \code{text1} and \code{text2}, the distance between them and the
+#'   corresponding match type\item \code{distance_matrix} a matrix of distances
 #'   between text lines -- rows for text1 and columns for text2 }
 #'
 #' @examples
 #' ## diffr(example_A1_split, example_A2_split)
 
 
-diffr <- function(text1, text2, clean="none",
-                  dist="levenshtein", maxDist="Inf",
-                  ret="all"){
+diffr <- function(text1   = example_A1_split,
+                  text2   = example_A2_split,
+                  clean   = "none",
+                  dist    = "levenshtein",
+                  maxDist = "Inf",
+                  sortDF  = c(1,2,0),
+                  ignore  = "empty",
+                  ret     = "all"){
 
   # text supplied as character vector?
-   if( class(text1)=="list" & class(text2)=="list" ){
-    text1 <- unlist(text1)
-    text2 <- unlist(text2)
-   }
-   if( class(text1)!="character" | class(text2)!="character" ){
-    stop("Class of texts supplied should be character.")
-   }
+    if( class(text1)=="list" & class(text2)=="list" ){
+      text1 <- unlist(text1)
+      text2 <- unlist(text2)
+    }
+    if( class(text1)!="character" | class(text2)!="character" ){
+      stop("Class of texts supplied should be character.")
+    }
 
-  # Clean Text Functions: either supplied or selected from defaults
-    # 1 checking
-    # 2 selecting/asigning
-    # 3 calculation
-    if(class(clean)=="character" ){
-      if( !(clean %in% names(cleanTextFunctions)) ){
-        stop(paste("No such function as '",clean,"' to be found"))
-      }
-      clean <- cleanTextFunctions[[clean]]
-    }
-    if( class(clean)!= "function"){
-      stop("clean argument supplied is neither one of
-           the package defaults nor a valid function.")
-    }
-    text1_clean <- clean(text1)
-    text2_clean <- clean(text2)
+  # Ignore Lines
+    ignore <- select_function_option(ignore, ignoreLinesFunctions)
+    text1_ignore <- ignore(text1)
+    text2_ignore <- ignore(text2)
 
-  # Distance Function: either supplied or selected from defaults
-    # 1 checking
-    # 2 selecting/asigning
-    # 3 calculation
-    if(class(dist)=="character" ){
-      if( !(dist %in% names(distanceFunctions)) ){
-        stop(paste("No such function as '",dist,"' to be found"))
-      }
-      dist <- distanceFunctions[[dist]]
-    }
-    if( class(dist)!= "function"){
-      stop("clean argument supplied is neither one of
-             the package defaults nor a valid function.")
-    }
-    distance_matrix <- dist(text1_clean, text2_clean)
+  # Clean Text
+    clean <- select_function_option(clean, cleanTextFunctions)
+    text1_clean <- text1
+    text2_clean <- text2
+    text1_clean[!text1_ignore] <- clean(text1[!text1_ignore])
+    text2_clean[!text2_ignore] <- clean(text2[!text2_ignore])
+
+  # Distance Calculation
+    dist <- select_function_option(dist, distanceFunctions)
+    distance_matrix  <- dist(text1_clean, text2_clean)
+    distance_matrix[text1_ignore , ] <- Inf
+    distance_matrix[ , text2_ignore] <- Inf
+    text1_indel_dist <- as.vector(dist(text1_clean, ""))
+    text2_indel_dist <- as.vector(dist(text2_clean, ""))
+    text1_indel_dist[text1_ignore] <- NA
+    text2_indel_dist[text2_ignore] <- NA
 
   # text alignment
-  AlignM  <- text_align(distance_matrix, maxDist, T)
-  AlignDF <- align_matrix_to_align_df(AlignM, distance_matrix)
-
+    alignM  <- text_align(distance_matrix, maxDist, T)
+    alignDF <- align_matrix_to_align_df(alignM,
+                                        distance_matrix,
+                                        text1_indel_dist,
+                                        text2_indel_dist)
+    if(sortDF[1] == 0){
+      alignDF <- alignDF[ order(
+                            as.numeric(alignDF$lnr1),
+                            as.numeric(alignDF$lnr2)  ), ]
+    }
+    if(sortDF[1] == 1) alignDF <- sort_align_df(alignDF,T)
+    if(sortDF[1] == 2) alignDF <- sort_align_df(alignDF,F)
 
   # results preparation
-  res <- list( text1_orig        = text1,
-               text2_orig        = text2,
-               text1_clean       = text1_clean,
-               text2_clean       = text2_clean,
-               distance_matrix   = distance_matrix,
-               alignment_matrix  = AlignM,
-               alignment_df      = AlignDF
-             )
+    res <- list( text1_orig        = text1,
+                 text2_orig        = text2,
+                 text1_clean       = text1_clean,
+                 text2_clean       = text2_clean,
+                 distance_matrix   = distance_matrix,
+                 alignment_df      = alignDF
+    )
+
   # return
-  if ( all(ret == "all") ) {
-    return(res)
-  }
-  if ( all(ret == "default") ) {
-    return(res$alignment_auto)
-  }
-  if ( length(ret)>1 ){
-    return(res[ret])
-  }
- }
+    if ( all(ret == "all") ) {
+      return(res)
+    }
+    if ( all(ret == "default") ) {
+      return(res$alignment_df)
+    }
+    if ( length(ret)>1 ){
+      return(res[ret])
+    }
+}
 
 
 

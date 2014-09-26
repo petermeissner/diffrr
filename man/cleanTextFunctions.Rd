@@ -2,21 +2,13 @@
 \docType{data}
 \name{cleanTextFunctions}
 \alias{cleanTextFunctions}
-\title{Predefined cleanText functions saved in a list.}
+\title{Set of predefined functions for diffr()}
 \format{list of functions}
 \usage{
 cleanTextFunctions
 }
-\arguments{
-\item{none}{does not transform the text at all}
-
-\item{idep}{used in the data gathering of IDEP (Institutional Design in European Parliaments)
-working group see citation(diffr) as well as
-https://github.com/petermeissner/diffr for further information}
-}
 \description{
-\code{cleanTextFunctions} is a list of predefined functions for text cleansing
-to be applied before diffr() calculates distances and alignes text
+Set of functions to clean text before distances are calculated.
 }
 \keyword{datasets}
 
