@@ -13,3 +13,4 @@ Source of Text: \nDiff. (2014, August 26). \nIn Wikipedia, \nThe Free Encycloped
 
 #' second text of ruinning example A  as character vector
 example_A2_split <- unlist(strsplit(example_A2, "\n"))
+
