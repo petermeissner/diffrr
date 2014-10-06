@@ -2,4 +2,4 @@
 
 ## Features
 
-- implement `align_df_to_html()` function 
+- implement `diffr_to_html()` function 

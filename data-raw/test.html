@@ -1,0 +1,581 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+        <style type="text/css">
+          body {margin-left:20px;}
+          table { border-collapse: collapse;}
+          TR:hover { background: #CCD9E8; }
+          .reset  { background: #F5D8CE; }
+          .ignore { background: #EBEBEB; }
+          .insertion { background: #A3FFA3; }
+          .deletion { background: #C2E0FF; }
+          .change { background: #FFEA98; }
+          TR.firstLine {color: #FFFFFF;background: #000000;font-weight: bold; }
+          .nr , .LNr1, .LNr2, .Distance {text-align: right; }
+          .Type {text-align: center; }
+        </style>
+            </head>
+  <body>
+
+  
+  
+<table>
+<thead><tr class='firstLine'>
+  <th class='firstLineCell'>&nbsp;nr&nbsp;</th>
+  <th class='firstLineCell'>&nbsp; LNr1&nbsp; </th>
+  <th class='firstLineCell'>&nbsp; Text1&nbsp; </th>
+  <th class='firstLineCell'>&nbsp; LNr2&nbsp; </th>
+  <th class='firstLineCell'>&nbsp; Text2&nbsp; </th>
+  <th class='firstLineCell'>&nbsp; Type&nbsp; </th>
+  <th class='firstLineCell'>&nbsp; Distance&nbsp; </th>
+</tr></thead>
+<tr class='nochange'>
+  <td class='nr'>2&nbsp;</td>
+  <td class='LNr1'>1&nbsp;</td>
+  <td class='Text1'>This part of the&nbsp;</td>
+  <td class='LNr2'>7&nbsp;</td>
+  <td class='Text2'>This part of the&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='insertion'>
+  <td class='nr'>35&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>1&nbsp;</td>
+  <td class='Text2'>This is an important&nbsp;</td>
+  <td class='Type'>insertion&nbsp;</td>
+  <td class='Distance'>20&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>3&nbsp;</td>
+  <td class='LNr1'>2&nbsp;</td>
+  <td class='Text1'>document has stayed the&nbsp;</td>
+  <td class='LNr2'>8&nbsp;</td>
+  <td class='Text2'>document has stayed the&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='insertion'>
+  <td class='nr'>36&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>2&nbsp;</td>
+  <td class='Text2'>notice! It should&nbsp;</td>
+  <td class='Type'>insertion&nbsp;</td>
+  <td class='Distance'>17&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>4&nbsp;</td>
+  <td class='LNr1'>3&nbsp;</td>
+  <td class='Text1'>same from version to&nbsp;</td>
+  <td class='LNr2'>9&nbsp;</td>
+  <td class='Text2'>same from version to&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='insertion'>
+  <td class='nr'>37&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>3&nbsp;</td>
+  <td class='Text2'>therefore be located at&nbsp;</td>
+  <td class='Type'>insertion&nbsp;</td>
+  <td class='Distance'>23&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>5&nbsp;</td>
+  <td class='LNr1'>4&nbsp;</td>
+  <td class='Text1'>version.  It shouldn't&nbsp;</td>
+  <td class='LNr2'>10&nbsp;</td>
+  <td class='Text2'>version.  It shouldn't&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='insertion'>
+  <td class='nr'>38&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>4&nbsp;</td>
+  <td class='Text2'>the beginning of this&nbsp;</td>
+  <td class='Type'>insertion&nbsp;</td>
+  <td class='Distance'>21&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>6&nbsp;</td>
+  <td class='LNr1'>5&nbsp;</td>
+  <td class='Text1'>be shown if it doesn't&nbsp;</td>
+  <td class='LNr2'>11&nbsp;</td>
+  <td class='Text2'>be shown if it doesn't&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>7&nbsp;</td>
+  <td class='LNr1'>6&nbsp;</td>
+  <td class='Text1'>change.  Otherwise, that&nbsp;</td>
+  <td class='LNr2'>12&nbsp;</td>
+  <td class='Text2'>change.  Otherwise, that&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>39&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>6&nbsp;</td>
+  <td class='Text2'>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>8&nbsp;</td>
+  <td class='LNr1'>7&nbsp;</td>
+  <td class='Text1'>would not be helping to&nbsp;</td>
+  <td class='LNr2'>13&nbsp;</td>
+  <td class='Text2'>would not be helping to&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='change'>
+  <td class='nr'>9&nbsp;</td>
+  <td class='LNr1'>8&nbsp;</td>
+  <td class='Text1'>compress the size of the&nbsp;</td>
+  <td class='LNr2'>14&nbsp;</td>
+  <td class='Text2'>compress anything.&nbsp;</td>
+  <td class='Type'>change&nbsp;</td>
+  <td class='Distance'>18&nbsp;</td>
+<tr class='change'>
+  <td class='nr'>1&nbsp;</td>
+  <td class='LNr1'>9&nbsp;</td>
+  <td class='Text1'>changes.&nbsp;</td>
+  <td class='LNr2'>5&nbsp;</td>
+  <td class='Text2'>document!&nbsp;</td>
+  <td class='Type'>change&nbsp;</td>
+  <td class='Distance'>13&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>30&nbsp;</td>
+  <td class='LNr1'>10&nbsp;</td>
+  <td class='Text1'>&nbsp;</td>
+  <td class='LNr2'>&nbsp;</td>
+  <td class='Text2'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>19&nbsp;</td>
+  <td class='LNr1'>11&nbsp;</td>
+  <td class='Text1'>This paragraph contains&nbsp;</td>
+  <td class='LNr2'>26&nbsp;</td>
+  <td class='Text2'>This paragraph contains&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='change'>
+  <td class='nr'>20&nbsp;</td>
+  <td class='LNr1'>12&nbsp;</td>
+  <td class='Text1'>text that is outdated.&nbsp;</td>
+  <td class='LNr2'>28&nbsp;</td>
+  <td class='Text2'>to this document.&nbsp;</td>
+  <td class='Type'>change&nbsp;</td>
+  <td class='Distance'>17&nbsp;</td>
+<tr class='deletion'>
+  <td class='nr'>31&nbsp;</td>
+  <td class='LNr1'>13&nbsp;</td>
+  <td class='Text1'>It will be deleted in the&nbsp;</td>
+  <td class='LNr2'>&nbsp;</td>
+  <td class='Text2'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='Type'>deletion&nbsp;</td>
+  <td class='Distance'>25&nbsp;</td>
+<tr class='deletion'>
+  <td class='nr'>32&nbsp;</td>
+  <td class='LNr1'>14&nbsp;</td>
+  <td class='Text1'>near future.&nbsp;</td>
+  <td class='LNr2'>&nbsp;</td>
+  <td class='Text2'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='Type'>deletion&nbsp;</td>
+  <td class='Distance'>12&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>33&nbsp;</td>
+  <td class='LNr1'>15&nbsp;</td>
+  <td class='Text1'>&nbsp;</td>
+  <td class='LNr2'>&nbsp;</td>
+  <td class='Text2'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>40&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>15&nbsp;</td>
+  <td class='Text2'>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>10&nbsp;</td>
+  <td class='LNr1'>16&nbsp;</td>
+  <td class='Text1'>It is important to spell&nbsp;</td>
+  <td class='LNr2'>16&nbsp;</td>
+  <td class='Text2'>It is important to spell&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='change'>
+  <td class='nr'>11&nbsp;</td>
+  <td class='LNr1'>17&nbsp;</td>
+  <td class='Text1'>check this dokument. On&nbsp;</td>
+  <td class='LNr2'>17&nbsp;</td>
+  <td class='Text2'>check this document. On&nbsp;</td>
+  <td class='Type'>change&nbsp;</td>
+  <td class='Distance'>2&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>12&nbsp;</td>
+  <td class='LNr1'>18&nbsp;</td>
+  <td class='Text1'>the other hand, a&nbsp;</td>
+  <td class='LNr2'>18&nbsp;</td>
+  <td class='Text2'>the other hand, a&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>13&nbsp;</td>
+  <td class='LNr1'>19&nbsp;</td>
+  <td class='Text1'>misspelled word isn't&nbsp;</td>
+  <td class='LNr2'>19&nbsp;</td>
+  <td class='Text2'>misspelled word isn't&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>14&nbsp;</td>
+  <td class='LNr1'>20&nbsp;</td>
+  <td class='Text1'>the end of the world.&nbsp;</td>
+  <td class='LNr2'>20&nbsp;</td>
+  <td class='Text2'>the end of the world.&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>15&nbsp;</td>
+  <td class='LNr1'>21&nbsp;</td>
+  <td class='Text1'>Nothing in the rest of&nbsp;</td>
+  <td class='LNr2'>21&nbsp;</td>
+  <td class='Text2'>Nothing in the rest of&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>16&nbsp;</td>
+  <td class='LNr1'>22&nbsp;</td>
+  <td class='Text1'>this paragraph needs to&nbsp;</td>
+  <td class='LNr2'>22&nbsp;</td>
+  <td class='Text2'>this paragraph needs to&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>17&nbsp;</td>
+  <td class='LNr1'>23&nbsp;</td>
+  <td class='Text1'>be changed. Things can&nbsp;</td>
+  <td class='LNr2'>23&nbsp;</td>
+  <td class='Text2'>be changed. Things can&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>18&nbsp;</td>
+  <td class='LNr1'>24&nbsp;</td>
+  <td class='Text1'>be added after it.&nbsp;</td>
+  <td class='LNr2'>24&nbsp;</td>
+  <td class='Text2'>be added after it.&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>34&nbsp;</td>
+  <td class='LNr1'>25&nbsp;</td>
+  <td class='Text1'>&nbsp;</td>
+  <td class='LNr2'>&nbsp;</td>
+  <td class='Text2'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>41&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>25&nbsp;</td>
+  <td class='Text2'>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>21&nbsp;</td>
+  <td class='LNr1'>26&nbsp;</td>
+  <td class='Text1'>Source of Text: &nbsp;</td>
+  <td class='LNr2'>30&nbsp;</td>
+  <td class='Text2'>Source of Text: &nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>22&nbsp;</td>
+  <td class='LNr1'>27&nbsp;</td>
+  <td class='Text1'>Diff. (2014, August 26). &nbsp;</td>
+  <td class='LNr2'>31&nbsp;</td>
+  <td class='Text2'>Diff. (2014, August 26). &nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='insertion'>
+  <td class='nr'>42&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>27&nbsp;</td>
+  <td class='Text2'>important new additions&nbsp;</td>
+  <td class='Type'>insertion&nbsp;</td>
+  <td class='Distance'>23&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>23&nbsp;</td>
+  <td class='LNr1'>28&nbsp;</td>
+  <td class='Text1'>In Wikipedia, &nbsp;</td>
+  <td class='LNr2'>32&nbsp;</td>
+  <td class='Text2'>In Wikipedia, &nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>24&nbsp;</td>
+  <td class='LNr1'>29&nbsp;</td>
+  <td class='Text1'>The Free Encyclopedia.&nbsp;</td>
+  <td class='LNr2'>33&nbsp;</td>
+  <td class='Text2'>The Free Encyclopedia.&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='ignore'>
+  <td class='nr'>43&nbsp;</td>
+  <td class='LNr1'>&nbsp;</td>
+  <td class='Text1'><font size="1" color="grey">NA</font>&nbsp;</td>
+  <td class='LNr2'>29&nbsp;</td>
+  <td class='Text2'>&nbsp;</td>
+  <td class='Type'>ignore&nbsp;</td>
+  <td class='Distance'>&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>25&nbsp;</td>
+  <td class='LNr1'>30&nbsp;</td>
+  <td class='Text1'> Retrieved 10:14, &nbsp;</td>
+  <td class='LNr2'>34&nbsp;</td>
+  <td class='Text2'> Retrieved 10:14, &nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>26&nbsp;</td>
+  <td class='LNr1'>31&nbsp;</td>
+  <td class='Text1'>September 24, 2014, &nbsp;</td>
+  <td class='LNr2'>35&nbsp;</td>
+  <td class='Text2'>September 24, 2014, &nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>27&nbsp;</td>
+  <td class='LNr1'>32&nbsp;</td>
+  <td class='Text1'>from http://en.wikipedia.org&nbsp;</td>
+  <td class='LNr2'>36&nbsp;</td>
+  <td class='Text2'>from http://en.wikipedia.org&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>28&nbsp;</td>
+  <td class='LNr1'>33&nbsp;</td>
+  <td class='Text1'>/w/index.php?title=Diff&nbsp;</td>
+  <td class='LNr2'>37&nbsp;</td>
+  <td class='Text2'>/w/index.php?title=Diff&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+<tr class='nochange'>
+  <td class='nr'>29&nbsp;</td>
+  <td class='LNr1'>34&nbsp;</td>
+  <td class='Text1'>&oldid=622929855&nbsp;</td>
+  <td class='LNr2'>38&nbsp;</td>
+  <td class='Text2'>&oldid=622929855&nbsp;</td>
+  <td class='Type'>no change&nbsp;</td>
+  <td class='Distance'>0&nbsp;</td>
+
+</table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+/*! Copyright (c) 2011 by Jonas Mosbech - https://github.com/jmosbech/StickyTableHeaders
+    MIT license info: https://github.com/jmosbech/StickyTableHeaders/blob/master/license.txt */
+$(function(){
+    $("table").stickyTableHeaders();
+    });
+;(function ($, window, undefined) {
+  'use strict';
+  var name = 'stickyTableHeaders';
+  var defaults = {
+      fixedOffset: 0
+};
+  function Plugin (el, options) {
+    // To avoid scope issues, use 'base' instead of 'this'
+    // to reference this class from internal events and functions.
+    var base = this;
+
+    // Access to jQuery and DOM versions of element
+    base.$el = $(el);
+    base.el = el;
+
+    // Listen for destroyed, call teardown
+    base.$el.bind('destroyed',
+      $.proxy(base.teardown, base));
+
+    // Cache DOM refs for performance reasons
+    base.$window = $(window);
+    base.$clonedHeader = null;
+    base.$originalHeader = null;
+
+    // Keep track of state
+    base.isSticky = false;
+    base.leftOffset = null;
+    base.topOffset = null;
+
+    base.init = function () {
+      base.options = $.extend({}, defaults, options);
+
+      base.$el.each(function () {
+        var $this = $(this);
+
+        // remove padding on <table> to fix issue #7
+        $this.css('padding', 0);
+
+        base.$originalHeader = $('thead:first', this);
+        base.$clonedHeader = base.$originalHeader.clone();
+
+        base.$clonedHeader.addClass('tableFloatingHeader');
+        base.$clonedHeader.css('display', 'none');
+
+        base.$originalHeader.addClass('tableFloatingHeaderOriginal');
+
+        base.$originalHeader.after(base.$clonedHeader);
+
+        base.$printStyle = $('<style type="text/css" media="print">' +
+          '.tableFloatingHeader{display:none !important;}' +
+          '.tableFloatingHeaderOriginal{position:static !important;}' +
+          '</style>');
+        $('head').append(base.$printStyle);
+      });
+
+      base.updateWidth();
+      base.toggleHeaders();
+
+      base.bind();
+    };
+
+    base.destroy = function (){
+      base.$el.unbind('destroyed', base.teardown);
+      base.teardown();
+    };
+
+    base.teardown = function(){
+      if (base.isSticky) {
+        base.$originalHeader.css('position', 'static');
+      }
+      $.removeData(base.el, 'plugin_' + name);
+      base.unbind();
+
+      base.$clonedHeader.remove();
+      base.$originalHeader.removeClass('tableFloatingHeaderOriginal');
+      base.$originalHeader.css('visibility', 'visible');
+      base.$printStyle.remove();
+
+      base.el = null;
+      base.$el = null;
+    };
+
+    base.bind = function(){
+      base.$window.on('scroll.' + name, base.toggleHeaders);
+      base.$window.on('resize.' + name, base.toggleHeaders);
+      base.$window.on('resize.' + name, base.updateWidth);
+    };
+
+    base.unbind = function(){
+      // unbind window events by specifying handle so we don't remove too much
+      base.$window.off('.' + name, base.toggleHeaders);
+      base.$window.off('.' + name, base.updateWidth);
+      base.$el.off('.' + name);
+      base.$el.find('*').off('.' + name);
+    };
+
+    base.toggleHeaders = function () {
+      base.$el.each(function () {
+        var $this = $(this);
+
+        var newTopOffset = isNaN(base.options.fixedOffset) ?
+          base.options.fixedOffset.height() : base.options.fixedOffset;
+
+        var offset = $this.offset();
+        var scrollTop = base.$window.scrollTop() + newTopOffset;
+        var scrollLeft = base.$window.scrollLeft();
+
+        if ((scrollTop > offset.top) && (scrollTop < offset.top + $this.height() - base.$clonedHeader.height())) {
+          var newLeft = offset.left - scrollLeft;
+          if (base.isSticky && (newLeft === base.leftOffset) && (newTopOffset === base.topOffset)) {
+            return;
+          }
+
+          base.$originalHeader.css({
+            'position': 'fixed',
+            'top': newTopOffset,
+            'margin-top': 0,
+            'left': newLeft,
+            'z-index': 1 // #18: opacity bug
+          });
+          base.$clonedHeader.css('display', '');
+          base.isSticky = true;
+          base.leftOffset = newLeft;
+          base.topOffset = newTopOffset;
+
+          // make sure the width is correct: the user might have resized the browser while in static mode
+          base.updateWidth();
+        }
+        else if (base.isSticky) {
+          base.$originalHeader.css('position', 'static');
+          base.$clonedHeader.css('display', 'none');
+          base.isSticky = false;
+        }
+      });
+    };
+
+    base.updateWidth = function () {
+      if (!base.isSticky) {
+        return;
+      }
+      // Copy cell widths from clone
+      var $origHeaders = $('th,td', base.$originalHeader);
+      $('th,td', base.$clonedHeader).each(function (index) {
+
+        var width, $this = $(this);
+
+        if ($this.css('box-sizing') === 'border-box') {
+          width = $this.outerWidth(); // #39: border-box bug
+        } else {
+          width = $this.width();
+        }
+
+        $origHeaders.eq(index).css({
+          'min-width': width,
+          'max-width': width
+        });
+      });
+
+      // Copy row width from whole table
+      base.$originalHeader.css('width', base.$clonedHeader.width());
+    };
+
+    base.updateOptions = function(options) {
+      base.options = $.extend({}, defaults, options);
+      base.updateWidth();
+      base.toggleHeaders();
+    };
+
+    // Run initializer
+    base.init();
+  }
+
+  // A plugin wrapper around the constructor,
+  // preventing against multiple instantiations
+  $.fn[name] = function ( options ) {
+    return this.each(function () {
+      var instance = $.data(this, 'plugin_' + name);
+      if (instance) {
+        if (typeof options === "string") {
+          instance[options].apply(instance);
+        } else {
+          instance.updateOptions(options);
+        }
+      } else if(options !== 'destroy') {
+        $.data(this, 'plugin_' + name, new Plugin( this, options ));
+      }
+    });
+  };
+
+})(jQuery, window);
+</script>
+
+  </body>
+</html>
