@@ -22,6 +22,7 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 ## Links
 
 - http://www.polver.uni-konstanz.de/sieberer/forschung/
+- http://link.springer.com/article/10.1007%2Fs12286-014-0216-7
 
 
 ## Example Usage
@@ -40,21 +41,7 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 ```r
     res <- diffr(example_A1_split, example_A2_split, 
                  clean="none", dist="levenwords", sortDF=0)
-```
 
-```
-## Loading required package: cba
-## Loading required package: grid
-## Loading required package: proxy
-## 
-## Attaching package: 'proxy'
-## 
-## The following objects are masked from 'package:stats':
-## 
-##     as.dist, dist
-```
-
-```r
     names(res)
 ```
 
