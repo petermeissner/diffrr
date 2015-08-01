@@ -158,3 +158,7 @@ or semi-automatically aligning text lines and measuring the change. It works kin
     
     
     
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/petermeissner/diffr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
