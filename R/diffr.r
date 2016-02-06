@@ -127,6 +127,7 @@ diffr <- function(text1   = example_A1_split,
                                         distance_matrix,
                                         text1_indel_dist,
                                         text2_indel_dist)
+    class(alignDF) <- c("align_df", class(alignDF))
     if(sortDF[1] == 0){
       alignDF <- alignDF[ order(
                             as.numeric(alignDF$lnr1),
@@ -143,6 +144,7 @@ diffr <- function(text1   = example_A1_split,
                  distance_matrix   = distance_matrix,
                  alignment_df      = alignDF
     )
+    class(res) <- c("diffr", class(res))
 
   # return
     if ( all(ret == "all") ) {
@@ -156,9 +158,24 @@ diffr <- function(text1   = example_A1_split,
     }
 }
 
+#' print method for diffr objects
+print.diffr <- function(diffr){
+  res <-
+  data.frame( lnr1  = diffr$alignment_df$lnr1,
+              lnr2  = diffr$alignment_df$lnr2,
+              text1 = diffr$text1_orig[diffr$alignment_df$lnr1] ,
+              text2 = diffr$text2_orig[diffr$alignment_df$lnr2] ,
+              dist  = diffr$alignment_df$distance,
+              type  = diffr$alignment_df$type
+  )
+  print(res)
+  return(res)
+}
 
-
-
+#' plot method for diffr objects
+plot.diffr <- function(diffr){
+  print("Not Implemented Yet")
+}
 
 
 
