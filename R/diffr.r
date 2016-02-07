@@ -148,7 +148,7 @@ diffr <- function(text1   = example_A1_split,
                     lnr1  = alignDF$lnr1,
                     lnr2  = alignDF$lnr2,
                     text1 = text1[alignDF$lnr1] ,
-                    text2 = text1[alignDF$lnr2] ,
+                    text2 = text2[alignDF$lnr2] ,
                     dist  = alignDF$distance,
                     type  = alignDF$type
                 )
