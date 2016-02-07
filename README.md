@@ -80,23 +80,23 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 
 ```
 ##    lnr1 lnr2                        text1                        text2 dist   type
-## 1     1    7             This part of the      would not be helping to    0  equal
-## 2     2    8      document has stayed the     compress the size of the    0  equal
-## 3     3    9         same from version to                     changes.    0  equal
-## 4     4   10       version.  It shouldn't                                 0  equal
-## 5     5   11       be shown if it doesn't      This paragraph contains    0  equal
-## 6     6   12     change.  Otherwise, that       text that is outdated.    0  equal
-## 7     7   13      would not be helping to    It will be deleted in the    0  equal
+## 1     1    7             This part of the             This part of the    0  equal
+## 2     2    8      document has stayed the      document has stayed the    0  equal
+## 3     3    9         same from version to         same from version to    0  equal
+## 4     4   10       version.  It shouldn't       version.  It shouldn't    0  equal
+## 5     5   11       be shown if it doesn't       be shown if it doesn't    0  equal
+## 6     6   12     change.  Otherwise, that     change.  Otherwise, that    0  equal
+## 7     7   13      would not be helping to      would not be helping to    0  equal
 ## 8     8   NA     compress the size of the                         <NA>    5    del
-## 9     9    5                     changes.       be shown if it doesn't    2    mod
+## 9     9    5                     changes.                    document!    2    mod
 ## 10   10   NA                                                      <NA>   NA ignore
-## 11   11   26      This paragraph contains             Source of Text:     0  equal
+## 11   11   26      This paragraph contains      This paragraph contains    0  equal
 ## 12   12   NA       text that is outdated.                         <NA>    4    del
 ## 13   13   NA    It will be deleted in the                         <NA>    6    del
 ## 14   14   NA                 near future.                         <NA>    2    del
 ## 15   15   NA                                                      <NA>   NA ignore
 ## 16   16   16     It is important to spell     It is important to spell    0  equal
-## 17   17   17      check this dokument. On      check this dokument. On    2    mod
+## 17   17   17      check this dokument. On      check this document. On    2    mod
 ## 18   18   18            the other hand, a            the other hand, a    0  equal
 ## 19   19   19        misspelled word isn't        misspelled word isn't    0  equal
 ## 20   20   20        the end of the world.        the end of the world.    0  equal
@@ -105,26 +105,26 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 ## 23   23   23       be changed. Things can       be changed. Things can    0  equal
 ## 24   24   24           be added after it.           be added after it.    0  equal
 ## 25   25   NA                                                      <NA>   NA ignore
-## 26   26   30             Source of Text:             Retrieved 10:14,     0  equal
-## 27   27   31    Diff. (2014, August 26).          September 24, 2014,     0  equal
-## 28   28   32               In Wikipedia,  from http://en.wikipedia.org    0  equal
-## 29   29   33       The Free Encyclopedia.      /w/index.php?title=Diff    0  equal
-## 30   30   34            Retrieved 10:14,              &oldid=622929855    0  equal
-## 31   31   35         September 24, 2014,                          <NA>    0  equal
-## 32   32   36 from http://en.wikipedia.org                         <NA>    0  equal
-## 33   33   37      /w/index.php?title=Diff                         <NA>    0  equal
-## 34   34   38             &oldid=622929855                         <NA>    0  equal
-## 35   NA    1                         <NA>             This part of the    4    ins
-## 36   NA    2                         <NA>      document has stayed the    4    ins
-## 37   NA    3                         <NA>         same from version to    4    ins
-## 38   NA    4                         <NA>       version.  It shouldn't    4    ins
-## 39   NA    6                         <NA>     change.  Otherwise, that   NA ignore
-## 40   NA   14                         <NA>                 near future.    2    ins
+## 26   26   30             Source of Text:              Source of Text:     0  equal
+## 27   27   31    Diff. (2014, August 26).     Diff. (2014, August 26).     0  equal
+## 28   28   32               In Wikipedia,                In Wikipedia,     0  equal
+## 29   29   33       The Free Encyclopedia.       The Free Encyclopedia.    0  equal
+## 30   30   34            Retrieved 10:14,             Retrieved 10:14,     0  equal
+## 31   31   35         September 24, 2014,          September 24, 2014,     0  equal
+## 32   32   36 from http://en.wikipedia.org from http://en.wikipedia.org    0  equal
+## 33   33   37      /w/index.php?title=Diff      /w/index.php?title=Diff    0  equal
+## 34   34   38             &oldid=622929855             &oldid=622929855    0  equal
+## 35   NA    1                         <NA>         This is an important    4    ins
+## 36   NA    2                         <NA>            notice! It should    4    ins
+## 37   NA    3                         <NA>      therefore be located at    4    ins
+## 38   NA    4                         <NA>        the beginning of this    4    ins
+## 39   NA    6                         <NA>                                NA ignore
+## 40   NA   14                         <NA>           compress anything.    2    ins
 ## 41   NA   15                         <NA>                                NA ignore
 ## 42   NA   25                         <NA>                                NA ignore
-## 43   NA   27                         <NA>    Diff. (2014, August 26).     3    ins
-## 44   NA   28                         <NA>               In Wikipedia,     3    ins
-## 45   NA   29                         <NA>       The Free Encyclopedia.   NA ignore
+## 43   NA   27                         <NA>      important new additions    3    ins
+## 44   NA   28                         <NA>            to this document.    3    ins
+## 45   NA   29                         <NA>                                NA ignore
 ```
 
 ```r

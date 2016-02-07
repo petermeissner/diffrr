@@ -148,7 +148,7 @@ diffr <- function(text1   = example_A1_split,
                     lnr1  = alignDF$lnr1,
                     lnr2  = alignDF$lnr2,
                     text1 = text1[alignDF$lnr1] ,
-                    text2 = text1[alignDF$lnr2] ,
+                    text2 = text2[alignDF$lnr2] ,
                     dist  = alignDF$distance,
                     type  = alignDF$type
                 )
@@ -187,7 +187,13 @@ plot.diffr <- function(diffr){
   }
   LWD=1.5
   rows <- max(max(diffr$print$lnr1, na.rm=TRUE), max(diffr$print$lnr2, na.rm=TRUE))
-  plot(c(0.8,4.2), c(0,rows+1), xlab = "", ylab = "", col="white")
+  diffr$print$lnr2<-0-diffr$print$lnr2 +rows+1
+  diffr$print$lnr1<-0-diffr$print$lnr1 +rows+1
+  plot(c(0.8,4.2), c(0,rows+1), xlab = "versions", ylab = "line numbers",
+       col="white", yaxs = "i", xaxs = "i", axes = FALSE)
+  axis(1, at = c(1.5,3.5), labels=c("1", "2"))
+  axis(2, at = c(1,rows), labels = c(rows,1))
+  box()
   iffer <- !is.na(diffr$print$lnr1) & !is.na(diffr$print$lnr2)
   n <- sum(iffer)
   for(i in seq_len(n)){
@@ -203,7 +209,7 @@ plot.diffr <- function(diffr){
   n <- sum(iffer)
   for(i in seq_len(n)){
     spline <- data.frame(
-      x=1:2,
+      x=c(1,1.5),
       y=c(diffr$print[iffer, "lnr1"][i], diffr$print[iffer, "lnr1"][i]))
     lines(spline, col=col(diffr$print[iffer, "type"][i]), lwd=LWD)
   }
@@ -211,7 +217,7 @@ plot.diffr <- function(diffr){
   n <- sum(iffer)
   for(i in seq_len(n)){
     spline <- data.frame(
-      x=3:4,
+      x=c(3.5,4),
       y=c(diffr$print[iffer, "lnr2"][i], diffr$print[iffer, "lnr2"][i]))
     lines(spline, col=col(diffr$print[iffer, "type"][i]), lwd=LWD)
   }
