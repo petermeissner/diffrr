@@ -26,3 +26,4 @@ Imports:
 Suggests:
     testthat
 URL: https://github.com/petermeissner/diffr
+RoxygenNote: 5.0.1

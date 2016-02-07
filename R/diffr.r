@@ -142,7 +142,16 @@ diffr <- function(text1   = example_A1_split,
                  text1_clean       = text1_clean,
                  text2_clean       = text2_clean,
                  distance_matrix   = distance_matrix,
-                 alignment_df      = alignDF
+                 alignment_df      = alignDF,
+                 print             =
+                   data.frame(
+                    lnr1  = alignDF$lnr1,
+                    lnr2  = alignDF$lnr2,
+                    text1 = text1[alignDF$lnr1] ,
+                    text2 = text1[alignDF$lnr2] ,
+                    dist  = alignDF$distance,
+                    type  = alignDF$type
+                )
     )
     class(res) <- c("diffr", class(res))
 
@@ -160,24 +169,53 @@ diffr <- function(text1   = example_A1_split,
 
 #' print method for diffr objects
 print.diffr <- function(diffr){
-  res <-
-  data.frame( lnr1  = diffr$alignment_df$lnr1,
-              lnr2  = diffr$alignment_df$lnr2,
-              text1 = diffr$text1_orig[diffr$alignment_df$lnr1] ,
-              text2 = diffr$text2_orig[diffr$alignment_df$lnr2] ,
-              dist  = diffr$alignment_df$distance,
-              type  = diffr$alignment_df$type
-  )
-  print(res)
-  return(res)
+  print(diffr$print)
+  return(diffr)
 }
 
 #' plot method for diffr objects
 plot.diffr <- function(diffr){
-  print("Not Implemented Yet")
+  col <- function(type="") {
+    switch(as.character(type),
+           ignore = "grey",
+           ins    = "blue",
+           del    = "red",
+           equal  = "green",
+           mod    = "yellow",
+           "purple"
+    )
+  }
+  LWD=1.5
+  rows <- max(max(diffr$print$lnr1, na.rm=TRUE), max(diffr$print$lnr2, na.rm=TRUE))
+  plot(c(0.8,4.2), c(0,rows+1), xlab = "", ylab = "", col="white")
+  iffer <- !is.na(diffr$print$lnr1) & !is.na(diffr$print$lnr2)
+  n <- sum(iffer)
+  for(i in seq_len(n)){
+    spline <- as.data.frame(xspline(
+      x=1:4,
+      y=c(diffr$print[iffer, "lnr1"][i], diffr$print[iffer, "lnr1"][i],
+          diffr$print[iffer, "lnr2"][i], diffr$print[iffer, "lnr2"][i]),
+      s=c(1,1,1,1), draw=FALSE
+    ))
+    lines(spline, col=col(diffr$print[iffer, "type"][i]), lwd=LWD)
+  }
+  iffer <- !is.na(diffr$print$lnr1) & is.na(diffr$print$lnr2)
+  n <- sum(iffer)
+  for(i in seq_len(n)){
+    spline <- data.frame(
+      x=1:2,
+      y=c(diffr$print[iffer, "lnr1"][i], diffr$print[iffer, "lnr1"][i]))
+    lines(spline, col=col(diffr$print[iffer, "type"][i]), lwd=LWD)
+  }
+  iffer <- is.na(diffr$print$lnr1) & !is.na(diffr$print$lnr2)
+  n <- sum(iffer)
+  for(i in seq_len(n)){
+    spline <- data.frame(
+      x=3:4,
+      y=c(diffr$print[iffer, "lnr2"][i], diffr$print[iffer, "lnr2"][i]))
+    lines(spline, col=col(diffr$print[iffer, "type"][i]), lwd=LWD)
+  }
 }
-
-
 
 
 
