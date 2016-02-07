@@ -14,3 +14,10 @@ Source of Text: \nDiff. (2014, August 26). \nIn Wikipedia, \nThe Free Encycloped
 #' second text of ruinning example A  as character vector
 example_A2_split <- unlist(strsplit(example_A2, "\n"))
 
+
+
+# saving 
+save(example_A1,        file="../data/example_A1.rdata")
+save(example_A2,        file="../data/example_A2.rdata")
+save(example_A1_split,  file="../data/example_A1_split.rdata")
+save(example_A2_split,  file="../data/example_A2_split.rdata")

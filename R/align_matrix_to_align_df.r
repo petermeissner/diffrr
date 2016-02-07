@@ -42,8 +42,8 @@ align_matrix_to_align_df <- function(alignM,
       lnr2     <- alignRow[2]
       distance <- alignRow[3]
       if( !any(is.na(alignRow)) ){
-        if( distance==0 ) return("no change")
-        if( distance> 0 ) return("change")
+        if( distance==0 ) return("equal")
+        if( distance> 0 ) return("mod")
       }
       if( all(is.na(alignRow)) ){
         return("empty!")
@@ -55,10 +55,10 @@ align_matrix_to_align_df <- function(alignM,
         return("ignore")
       }
       if( is.na(lnr1) ){
-        return("insertion")
+        return("ins")
       }
       if( is.na(lnr2) ){
-        return("deletion")
+        return("del")
       }
     }
     df$type = apply(df, 1, align_type)

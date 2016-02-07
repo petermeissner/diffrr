@@ -26,6 +26,7 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 ## Links
 
 - http://www.polver.uni-konstanz.de/sieberer/forschung/
+- http://link.springer.com/article/10.1007%2Fs12286-014-0216-7
 
 
 ## Example Usage
@@ -34,7 +35,7 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 options(width = 160)
 ```
 
-```{r}
+```{r, fig.asp=1.5}
     require(diffr)
 
     res <- diffr(example_A1_split, example_A2_split, 
@@ -49,16 +50,13 @@ options(width = 160)
     head(res$alignment_df)
 
     # alignment of texts with texts
-    data.frame( lnr1  = res$alignment_df$lnr1, 
-                lnr2  = res$alignment_df$lnr2, 
-                text1 = res$text1_orig[res$alignment_df$lnr1] ,
-                text2 = res$text2_orig[res$alignment_df$lnr2] ,
-                dist  = res$alignment_df$distance,
-                type  = res$alignment_df$type
-         )
+    res$print
+    
+    # graphical overview
+    plot(res)
 ```
     
-    
+   
 
     
     
