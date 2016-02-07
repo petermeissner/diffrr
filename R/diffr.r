@@ -187,6 +187,8 @@ plot.diffr <- function(diffr){
   }
   LWD=1.5
   rows <- max(max(diffr$print$lnr1, na.rm=TRUE), max(diffr$print$lnr2, na.rm=TRUE))
+  diffr$print$lnr2<-0-diffr$print$lnr2 +rows+1
+  diffr$print$lnr1<-0-diffr$print$lnr1 +rows+1
   plot(c(0.8,4.2), c(0,rows+1), xlab = "versions", ylab = "line numbers",
        col="white", yaxs = "i", xaxs = "i", axes = FALSE)
   axis(1, at = c(1.5,3.5), labels=c("1", "2"))
