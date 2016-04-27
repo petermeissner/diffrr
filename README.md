@@ -4,6 +4,10 @@
 # diffr 
 A package for measuring change between different versions of text
 
+
+[![Travis-CI Build Status](https://travis-ci.org/petermeissner/diffr.svg?branch=master)](https://travis-ci.org/petermeissner/diffr)
+
+
 ## Description
 
 
