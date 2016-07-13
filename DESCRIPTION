@@ -21,8 +21,7 @@ License: MIT + file LICENSE
 LazyData: true
 Imports:
     stringr(>= 0.6.2),
-    proxy (>= 0.4),
-    cba (>= 0.2-14)
+    proxy (>= 0.4)
 Suggests:
     testthat
 URL: https://github.com/petermeissner/diffr
