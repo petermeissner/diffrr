@@ -2,7 +2,7 @@
 #'
 #' Set of functions to clean text before distances are calculated.
 #'
-#'
+#' @export
 #' @format list of functions
 cleanTextFunctions <- list(
   none = function(text){text},

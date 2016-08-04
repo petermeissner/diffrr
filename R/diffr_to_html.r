@@ -1,7 +1,7 @@
 #' Function for transforming diffr() results to HTML
 #'
 #'
-#'
+#' @export
 
 
 diffr_to_html <- function(diffrRes, file=F, head="", foot="", clean=F){

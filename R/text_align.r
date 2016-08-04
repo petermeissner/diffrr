@@ -10,7 +10,7 @@
 #'   match.
 #' @param retMatrix Should the result be returned as boolean matrix or as data
 #'   frame.
-#'
+#' @export
 
 
 

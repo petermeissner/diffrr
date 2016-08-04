@@ -77,6 +77,8 @@
 #'   corresponding match type\item \code{distance_matrix} a matrix of distances
 #'   between text lines -- rows for text1 and columns for text2 }
 #'
+#' @export
+#'
 #' @examples
 #' ## diffr(example_A1_split, example_A2_split)
 

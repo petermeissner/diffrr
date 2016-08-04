@@ -2,7 +2,7 @@
 #'
 #' Set of functions to calculate distance between each line of first text and
 #' each line of second text.
-#'
+#' @export
 
 distanceFunctions <- list(
 
