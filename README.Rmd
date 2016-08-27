@@ -1,39 +1,99 @@
 ---
-title: "README"
-output:
-  html_document:
-    keep_md: yes
+output: github_document
 ---
 
 
-# diffr 
-A package for measuring change between different versions of text
+```{r, include=FALSE}
+options("width"=101)
+tmp <- devtools:::read_dcf("DESCRIPTION")
+```
+
+```{r, results='asis', echo=FALSE}
+cat("#", tmp$Title)
+```
+
+
+**Status**
 
 
 [![Travis-CI Build Status](https://travis-ci.org/petermeissner/diffr.svg?branch=master)](https://travis-ci.org/petermeissner/diffr)
+[![codecov](https://codecov.io/gh/petermeissner/diffr/branch/master/graph/badge.svg)](https://codecov.io/gh/petermeissner/diffr/tree/master/R)
 
 
-## Description
 
 
-A package for measuring change between different versions of text by automatically
-or semi-automatically aligning text lines and measuring the change. It works kind of like diff or version control systems but focuses on **measuring** the **change** in contrast to focusing on solid version control. Furthermore, the package allows for (possibly user made) text cleaning functions that are applied before comparison. Another feature is the semi-automatic alignment that allows for fast computer decissions on clear alignments of 100% matches and 0% matches while asking for human input on more complex decissions.
-  
+```{r, include=FALSE}
+filelist.R   <- list.files("R", recursive = TRUE, pattern="\\.R$", ignore.case = TRUE, full.names = TRUE)
+filelist.tests   <- list.files("tests", recursive = TRUE, pattern="\\.R$", ignore.case = TRUE, full.names = TRUE)
+filelist.cpp <- list.files("src", recursive = TRUE, pattern="\\.cpp$", ignore.case = TRUE, full.names = TRUE)
+lines.R      <- unlist(lapply(filelist.R, readLines))
+lines.tests  <- unlist(lapply(filelist.cpp, readLines))
+lines.cpp    <- unlist(lapply(filelist.cpp, readLines))
+length.R     <- length(grep("(^\\s*$)|(^\\s*#)|(^\\s*//)", lines.R,  value = TRUE, invert = TRUE))
+length.tests <- length(grep("(^\\s*$)|(^\\s*#)|(^\\s*//)", lines.tests,  value = TRUE, invert = TRUE))
+length.cpp   <- length(grep("(^\\s*$)|(^\\s*#)|(^\\s*//)", lines.cpp,  value = TRUE, invert = TRUE))
+```
 
-## Installation
+
+
+*lines of R code:* `r length.R`, *lines of C++ code:* `r length.cpp`, *lines of test code:* `r length.tests`
+
+
+
+**Version**
+
+```{r, results='asis', echo=FALSE}
+cat(tmp$Version)
+```
+
+
+**Description**
+
+```{r, results='asis', echo=FALSE}
+cat(tmp$Description)
+```
+
+
+**License**
+
+```{r, results='asis', echo=FALSE}
+cat(tmp$License, "<br>")
+cat(tmp$Author)
+```
+
+
+
+
+**Citation**
+
+
+```{r, results='asis', echo=FALSE}
+citation("diffrprojects")
+```
+
+**BibTex for citing**
 
 ```{r, eval=FALSE}
-    devtools::install_github("petermeissner/diffr")
-    require(diffr)
+toBibtex(citation("diffrprojects"))
 ```
+
+
+
+**Installation**
+
+```{r, eval=FALSE}
+install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat")
+```
+
+
     
-## Links
+**Links**
 
 - http://www.polver.uni-konstanz.de/sieberer/forschung/
 - http://link.springer.com/article/10.1007%2Fs12286-014-0216-7
 
 
-## Example Usage
+**Example Usage**
 
 ```{r set-options, echo=FALSE, cache=FALSE}
 options(width = 160)
@@ -55,9 +115,7 @@ options(width = 160)
 
     # alignment of texts with texts
     res$print
-    
-    # graphical overview
-    plot(res)
+
 ```
     
    
