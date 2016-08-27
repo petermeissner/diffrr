@@ -39,6 +39,8 @@ or semi-automatically aligning text lines and measuring the change. It works kin
 options(width = 160)
 ```
 
+
+
 ```{r, fig.asp=1.5}
     require(diffr)
 
