@@ -99,6 +99,8 @@ install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat"
 options(width = 160)
 ```
 
+
+
 ```{r, fig.asp=1.5}
     require(diffr)
 
