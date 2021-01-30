@@ -1,7 +1,0 @@
-^.*\.Rproj$
-^\.Rproj\.user$
-devel/.*$
-data-raw/.*$
-^\.travis\.yml$
-README.Rmd
-README.html

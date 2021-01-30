@@ -1,20 +1,29 @@
 
-Comparing and aligning text
-===========================
+# Comparing and aligning text
 
 **Status**
 
-[![Travis-CI Build Status](https://travis-ci.org/petermeissner/diffr.svg?branch=master)](https://travis-ci.org/petermeissner/diffr) [![codecov](https://codecov.io/gh/petermeissner/diffr/branch/master/graph/badge.svg)](https://codecov.io/gh/petermeissner/diffr/tree/master/R)
+[![Travis-CI Build
+Status](https://travis-ci.org/petermeissner/diffr.svg?branch=master)](https://travis-ci.org/petermeissner/diffr)
+[![codecov](https://codecov.io/gh/petermeissner/diffr/branch/master/graph/badge.svg)](https://codecov.io/gh/petermeissner/diffr/tree/master/R)
 
-*lines of R code:* 506, *lines of C++ code:* 0, *lines of test code:* 0
+*lines of R code:* 0, *lines of C++ code:* 0, *lines of test code:* 0
 
 **Version**
 
-0.1.3
+0.1.4
 
 **Description**
 
-A package for measuring change between different versions of text by automatically or semi-automatically aligning text lines and measuring the change. It works kind of like diff or version control systems but focuses on measuring the change in contrast to focusing on solid version control. Furthermore, the package allows for (possibly user made) text cleaning functions that are applied before comparison. Another feature is the semi-automatic alignment that allows for fast computer decissions on clear alignments of 100% matches and 0% matches while asking for human input on more complex decissions.
+A package for measuring change between different versions of text by
+automatically or semi-automatically aligning text lines and measuring
+the change. It works kind of like diff or version control systems but
+focuses on measuring the change in contrast to focusing on solid version
+control. Furthermore, the package allows for (possibly user made) text
+cleaning functions that are applied before comparison. Another feature
+is the semi-automatic alignment that allows for fast computer decissions
+on clear alignments of 100% matches and 0% matches while asking for
+human input on more complex decissions.
 
 **License**
 
@@ -22,20 +31,27 @@ MIT + file LICENSE <br>Peter Meissner (<retep.meissner@gmail.com>)
 
 **Citation**
 
-Meißner P (2016). *diffrprojects: Using diffr for more than two texts*. R package version 0.1.3.90000, &lt;URL: <https://github.com/petermeissner/diffrprojects>&gt;.
+To cite package ‘diffr’ in publications use:
 
-Sieberer U, Meißner P, Keh J and Müller W (2016). "Mapping and Explaining Parliamentary Rule Changes in Europe: A Research Program." *Legislative Studies Quarterly*, *41*(1), pp. 61-88. ISSN 1939-9162, doi: 10.1111/lsq.12106 (URL: <http://doi.org/10.1111/lsq.12106>), &lt;URL: <http://dx.doi.org/10.1111/lsq.12106>&gt;.
+Peter Meissner (2021). diffr: Comparing and aligning text. R package
+version 0.1.4. <https://github.com/petermeissner/diffr>
+
+A BibTeX entry for LaTeX users is
+
+@Manual{, title = {diffr: Comparing and aligning text}, author = {Peter
+Meissner}, year = {2021}, note = {R package version 0.1.4}, url =
+{<https://github.com/petermeissner/diffr>}, }
 
 **BibTex for citing**
 
 ``` r
-toBibtex(citation("diffrprojects"))
+toBibtex(citation("diffr"))
 ```
 
 **Installation**
 
 ``` r
-install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat")
+remotes::install_github("petermeissner/diffr/r_package")
 ```
 
 **Links**
@@ -46,30 +62,32 @@ install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat"
 **Example Usage**
 
 ``` r
-    require(diffr)
+require(diffr)
 ```
 
     ## Loading required package: diffr
 
 ``` r
-    res <- diffr(example_A1_split, example_A2_split, 
-                 clean="none", dist="levenwords", sortDF=0)
+res <- diffr(example_A1_split, example_A2_split, 
+             clean="none", dist="levenwords", sortDF=0)
 
-    names(res)
+names(res)
 ```
 
     ## [1] "text1_orig"      "text2_orig"      "text1_clean"     "text2_clean"     "distance_matrix" "alignment_df"    "print"
 
 ``` r
-    # total difference between both texts:
-    sum(res$alignment_df$dist, na.rm=T)
+# total difference between both texts:
+sum(res$alignment_df$dist, na.rm=T)
 ```
+
+    ## Warning in res$alignment_df$dist: partial match of 'dist' to 'distance'
 
     ## [1] 45
 
 ``` r
-    # alignment of texts
-    head(res$alignment_df)
+# alignment of texts
+head(res$alignment_df)
 ```
 
     ##   lnr1 lnr2 distance  type
@@ -81,8 +99,8 @@ install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat"
     ## 7    6   12        0 equal
 
 ``` r
-    # alignment of texts with texts
-    res$print
+# alignment of texts with texts
+res$print
 ```
 
     ##    lnr1 lnr2                        text1                        text2 dist   type

@@ -5,7 +5,7 @@ output: github_document
 
 ```{r, include=FALSE}
 options("width"=101)
-tmp <- devtools:::read_dcf("DESCRIPTION")
+tmp <- devtools:::read_dcf("r_package/DESCRIPTION")
 ```
 
 ```{r, results='asis', echo=FALSE}
@@ -68,13 +68,13 @@ cat(tmp$Author)
 
 
 ```{r, results='asis', echo=FALSE}
-citation("diffrprojects")
+citation("diffr")
 ```
 
 **BibTex for citing**
 
 ```{r, eval=FALSE}
-toBibtex(citation("diffrprojects"))
+toBibtex(citation("diffr"))
 ```
 
 
@@ -82,7 +82,7 @@ toBibtex(citation("diffrprojects"))
 **Installation**
 
 ```{r, eval=FALSE}
-install.packages("diffrprojects", repos = "https://petermeissner.github.io/drat")
+remotes::install_github("petermeissner/diffr/r_package")
 ```
 
 
@@ -102,22 +102,21 @@ options(width = 160)
 
 
 ```{r, fig.asp=1.5}
-    require(diffr)
+require(diffr)
 
-    res <- diffr(example_A1_split, example_A2_split, 
-                 clean="none", dist="levenwords", sortDF=0)
+res <- diffr(example_A1_split, example_A2_split, 
+             clean="none", dist="levenwords", sortDF=0)
 
-    names(res)
-    
-    # total difference between both texts:
-    sum(res$alignment_df$dist, na.rm=T)
+names(res)
 
-    # alignment of texts
-    head(res$alignment_df)
+# total difference between both texts:
+sum(res$alignment_df$dist, na.rm=T)
 
-    # alignment of texts with texts
-    res$print
+# alignment of texts
+head(res$alignment_df)
 
+# alignment of texts with texts
+res$print
 ```
     
    
