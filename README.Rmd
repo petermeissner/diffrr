@@ -23,11 +23,11 @@ cat("#", tmp$Title)
 
 
 ```{r, include=FALSE}
-filelist.R   <- list.files("R", recursive = TRUE, pattern="\\.R$", ignore.case = TRUE, full.names = TRUE)
-filelist.tests   <- list.files("tests", recursive = TRUE, pattern="\\.R$", ignore.case = TRUE, full.names = TRUE)
-filelist.cpp <- list.files("src", recursive = TRUE, pattern="\\.cpp$", ignore.case = TRUE, full.names = TRUE)
+filelist.R   <- list.files("r_package/R", recursive = TRUE, pattern="\\.[rR]$", ignore.case = TRUE, full.names = TRUE)
+filelist.tests   <- list.files("r_package/tests", recursive = TRUE, pattern="\\.[rR]$", ignore.case = TRUE, full.names = TRUE)
+filelist.cpp <- list.files("r_package/src", recursive = TRUE, pattern="\\.cpp$", ignore.case = TRUE, full.names = TRUE)
 lines.R      <- unlist(lapply(filelist.R, readLines))
-lines.tests  <- unlist(lapply(filelist.cpp, readLines))
+lines.tests  <- unlist(lapply(filelist.tests, readLines))
 lines.cpp    <- unlist(lapply(filelist.cpp, readLines))
 length.R     <- length(grep("(^\\s*$)|(^\\s*#)|(^\\s*//)", lines.R,  value = TRUE, invert = TRUE))
 length.tests <- length(grep("(^\\s*$)|(^\\s*#)|(^\\s*//)", lines.tests,  value = TRUE, invert = TRUE))

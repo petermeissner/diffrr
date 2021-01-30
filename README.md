@@ -7,7 +7,7 @@
 Status](https://travis-ci.org/petermeissner/diffr.svg?branch=master)](https://travis-ci.org/petermeissner/diffr)
 [![codecov](https://codecov.io/gh/petermeissner/diffr/branch/master/graph/badge.svg)](https://codecov.io/gh/petermeissner/diffr/tree/master/R)
 
-*lines of R code:* 0, *lines of C++ code:* 0, *lines of test code:* 0
+*lines of R code:* 517, *lines of C++ code:* 0, *lines of test code:* 86
 
 **Version**
 
